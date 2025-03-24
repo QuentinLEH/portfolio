@@ -1,0 +1,102 @@
+/* ----------------------------------------- */
+/* GENERAL RULES --------------------------- */
+/* ----------------------------------------- */
+html, body {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    background-color: var(--c-bg);
+    color: #fff;
+    white-space: nowrap;
+    transition-property: background-color;
+    transition-duration: .9s;
+    transition-timing-function: cubic-bezier(0.1, 0.4, 0.2, 1);
+}
+
+
+html { /* Scroll visual effect */
+    scroll-behavior: smooth;
+}
+body {
+    font-family: "Helvetica", sans-serif;
+    color: #252525;
+    background-color: #dddddd;
+    font-size: 14px;
+    font-weight: light 300;
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* Technique to put the footer on the bottom of the webpage (Header/Main/Footer) */
+    min-height: 100vh; /* Make the website at least as one page */
+    /* margin: 0px; */
+}
+
+a { /* Link style */
+    color: #468847;
+    text-decoration: underline;
+}
+a:focus-visible { /* TAB for Accessibility */
+    border: 5px solid #ff0000;
+}
+a:hover { /* Link style when you have your mouse on it */
+    color: #ff0000;
+} 
+button {
+    cursor: pointer; /* Cursor style for buttons */
+    background-color: #252525;
+    border: 2px solid #252525;
+    border-radius: 12px;
+    color: #dddddd;
+    padding: 2%; /* Responsive padding, depend on % */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: bold;
+} 
+button:hover { /* Button style when you have your mouse on it */
+    background-color: #dddddd; 
+    border: 2px solid #252525;
+    color: #252525;
+} 
+/* ----------------------------------------- */
+
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* Technique to put the footer on the bottom of the webpage (Header/Main/Footer) */
+    min-height: 100vh /* Make the website at least as one page */
+}
+
+/* ----------------------------------------- */
+/* SLIDING CONTENT ------------------------- */
+/* ----------------------------------------- */
+.content-inner {
+    transform: translate3d(0px, 0px, 0px);
+    height: 80vh; /* Ajuste la hauteur visible */
+    width: 60vw; /* Ajuste la largeur */
+    overflow-y: auto; /* Active le scroll vertical */
+    padding: 20px;
+    scrollbar-width: none; /* Cache la barre de scroll sur Firefox */
+}
+
+/* Cache la barre de scroll sur Chrome et Edge */
+.content-inner::-webkit-scrollbar {
+    display: none;
+}
+
+.project-list   {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    row-gap: 30px;
+}
+
+
+
+
+/* ----------------------------------------- */
+/* GSAP TRY -------------------------------- */
+/* ----------------------------------------- */
