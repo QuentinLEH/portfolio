@@ -1,100 +1,431 @@
 /* ----------------------------------------- */
 /* GENERAL RULES --------------------------- */
 /* ----------------------------------------- */
+
+/* -------> 1.Page style */
 html, body {
+    position: fixed; /* Fixe la position de l'élément par rapport à la fenêtre du navigateur, empêchant tout défilement. */
+    left: 0; /* Aligne l'élément à gauche de la fenêtre du navigateur. */
+    top: 0; /* Aligne l'élément en haut de la fenêtre du navigateur. */
+    width: 100%; /* Définit la largeur de l'élément à 100% de la largeur de la fenêtre. */
+    height: 100%; /* Définit la hauteur de l'élément à 100% de la hauteur de la fenêtre. */
+    overflow-x: hidden; /* Masque le contenu qui dépasse horizontalement, empêchant le défilement horizontal. */
+    overflow-y: hidden; /* Masque le contenu qui dépasse verticalement, empêchant le défilement vertical. */
+    background-color: var(--c-bg); /* Définit la couleur de fond en utilisant une variable CSS. */
+    color: #252525; /* Définit la couleur du texte en blanc. */
+    white-space: nowrap; /* Empêche les retours à la ligne automatiques dans les éléments. */
+    transition-property: background-color; /* Définit la propriété à animer lors des transitions. */
+    transition-duration: .9s; /* Définit la durée de la transition à 0.9 seconde. */
+    transition-timing-function: cubic-bezier(0.1, 0.4, 0.2, 1); /* Définit la fonction de temporisation de la transition pour un effet personnalisé. */
+    margin: 0; /* Supprime les marges par défaut du navigateur. */
+}
+html {
+    scroll-behavior: smooth; /* Active un défilement fluide pour les ancres et la navigation. */
+}
+body {
+    font-family: "JetBrains Mono", monospace;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 14px; /* Définit la taille de la police à 14 pixels. */
+    font-weight: 300; /* Définit l'épaisseur de la police à 300 (léger). */
+    color: #252525; /* Définit la couleur du texte en gris foncé. */
+    background-color: #f0f0f0; /* Définit la couleur de fond en gris clair. */
+    display: grid; /* Utilise la disposition en grille pour organiser les éléments enfants. */
+    grid-template-rows: auto 1fr auto; /* Définit trois rangées : une auto-ajustée, une flexible et une auto-ajustée, pour organiser le contenu en haut, au milieu et en bas. */
+    min-height: 100vh; /* Assure que la hauteur minimale du corps est égale à la hauteur de la fenêtre. */
+}
+
+/* -------> 2.Link style */
+a {
+    text-decoration: none; /* Souligne le texte des liens. */
+}
+a:focus-visible { /* Style des liens lorsqu'ils sont focusés via la navigation au clavier (accessibilité) */
+    border: 5px solid #ff0000; /* Ajoute une bordure rouge de 5 pixels autour des liens focusés. */
+}
+a:hover { /* Style des liens au survol */
+    background-color: #fce886;
+}
+
+/* -------> 3.Button style */
+button {
+    cursor: pointer; /* Change le curseur en pointeur lorsqu'il survole un bouton. */
+    background-color: #252525; /* Définit la couleur de fond des boutons en gris foncé. */
+    border: 2px solid #252525; /* Ajoute une bordure de 2 pixels en gris foncé autour des boutons. */
+    border-radius: 12px; /* Arrondit les coins des boutons avec un rayon de 12 pixels. */
+    color: #dddddd; /* Définit la couleur du texte des boutons en gris clair. */
+    padding: 2%; /* Ajoute un espace intérieur autour du contenu des boutons, proportionnel à leur taille. */
+    text-align: center; /* Centre le texte à l'intérieur des boutons. */
+    text-decoration: none; /* Supprime toute décoration de texte (comme le soulignement) des boutons. */
+    display: inline-block; /* Affiche les boutons comme des éléments en ligne-bloc, permettant de définir des dimensions. */
+    font-size: 1.2rem; /* Définit la taille de la police des boutons à 1.2rem. */
+    font-weight: bold; /* Définit l'épaisseur de la police des boutons en gras. */
+}
+button:hover { /* Style des boutons au survol */
+    background-color: #dddddd; /* Change la couleur de fond des boutons en gris clair lorsqu'ils sont survolés. */
+    border: 2px solid #252525; /* Conserve la bordure en gris foncé. */
+    color: #252525; /* Change la couleur du texte des boutons en gris foncé lorsqu'ils sont survolés. */
+}
+/* ----------------------------------------- */
+
+
+/* ----------------------------------------- */
+/* INTRODUCTION ANIMATION ------------------ */
+/* ----------------------------------------- */
+
+/* -------> 1.Loading screen looks */
+.loading-screen {
     position: fixed;
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    background-color: var(--c-bg);
-    color: #fff;
-    white-space: nowrap;
-    transition-property: background-color;
-    transition-duration: .9s;
-    transition-timing-function: cubic-bezier(0.1, 0.4, 0.2, 1);
+    background-color: #fff; /* Couleur de fond de l'écran de chargement */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Assurez-vous qu'il est au-dessus de tout autre contenu */
+    opacity: 1;
+    transition: opacity 2.5s ease-out;
+}
+.loading-screen.hidden {
+    opacity: 0;
+    pointer-events: none; /* Empêche les interactions pendant la transition */
+}
+.video-intro {
+    width: 80vw; /* 80% de la largeur de la fenêtre */
+    height: auto;
+    max-width: 80vh; /* Limite la hauteur à 80% de la hauteur de la fenêtre */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: videoAnimation 2.5s ease-out forwards;
+}
+@keyframes videoAnimation {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    30% {
+        opacity: 1; /* Reste visible */
+        transform: translate(-50%, -50%) scale(1.4); /* Agrandit légèrement */
+    }
+    50% {
+        opacity: 1; /* Reste visible */
+    }
+    80% {
+        opacity: 0; /* Reste visible */
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0.1); /* Réduit à une taille très petite */
+        opacity: 0; /* Disparition */
+    }
 }
 
+/* -------> 2.Current logo animation */
+.header .logo {
+    width: 100px; /* Taille finale de l'image sur la landing page */
+    height: auto;
+    opacity: 0; /* Initialement invisible */
+    transition: opacity 0.5s ease-out;
+}
+.header .logo.visible {
+    opacity: 1; /* Devient visible */
+    animation: logoAnimation 0.5s ease-out forwards;
+}
+@keyframes logoAnimation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.4); /* Agrandit à une échelle de 1.4 */
+    }
+    100% {
+        transform: scale(1); /* Revient à la taille initiale */
+    }
+}
+/* ----------------------------------------- */
 
-html { /* Scroll visual effect */
-    scroll-behavior: smooth;
-}
-body {
-    font-family: "Helvetica", sans-serif;
-    color: #252525;
-    background-color: #dddddd;
-    font-size: 14px;
-    font-weight: light 300;
-    display: grid;
-    grid-template-rows: auto 1fr auto; /* Technique to put the footer on the bottom of the webpage (Header/Main/Footer) */
-    min-height: 100vh; /* Make the website at least as one page */
-    /* margin: 0px; */
-}
 
-a { /* Link style */
-    color: #468847;
-    text-decoration: underline;
+/* ----------------------------------------- */
+/* FRAME+BORDER ---------------------------- */
+/* ----------------------------------------- */
+.framer {
+    position: fixed; /* Fixe le conteneur par rapport à la fenêtre du navigateur */
+    top: 4vmin; /* Espace de 2% de la plus petite dimension de la fenêtre en haut */
+    left: 4vmin; /* Espace de 2% de la plus petite dimension de la fenêtre à gauche */
+    right: 4vmin; /* Espace de 2% de la plus petite dimension de la fenêtre à droite */
+    bottom: 4vmin; /* Espace de 2% de la plus petite dimension de la fenêtre en bas */
+    background-color: transparent; /* Couleur de fond du conteneur */
+    overflow: hidden; /* Permet le défilement à l'intérieur du conteneur si nécessaire */
+    box-sizing: border-box; /* Inclut les marges et les bordures dans les dimensions totales */
+    border: #252525 1px solid; /* Bordure de 2 pixels en gris foncé */
+    border-radius: 6px; /* Coins arrondis du conteneur */
 }
-a:focus-visible { /* TAB for Accessibility */
-    border: 5px solid #ff0000;
+/* ----------------------------------------- */
+
+
+/* ----------------------------------------- */
+/* BACKGROUND ------------------------------ */
+/* ----------------------------------------- */
+.background {
+    position: absolute;
+    z-index: -100;
+    opacity: 0.2;
+    overflow: hidden;
 }
-a:hover { /* Link style when you have your mouse on it */
-    color: #ff0000;
+.background canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+/* ----------------------------------------- */
+
+
+/* ----------------------------------------- */
+/* GRAIN EFFECT ------------------------------ */
+/* ----------------------------------------- */
+#noise {
+    animation: noise .5s steps(10) infinite;
+    background-attachment: fixed;
+    background-repeat: repeat;
+    background-size: auto;
+    height: 100vh;
+    left: 0;
+    opacity: 0.8;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    transition: opacity 1s ease-out;
+    width: 100vw;
+    z-index: 102;
 } 
-button {
-    cursor: pointer; /* Cursor style for buttons */
-    background-color: #252525;
-    border: 2px solid #252525;
-    border-radius: 12px;
-    color: #dddddd;
-    padding: 2%; /* Responsive padding, depend on % */
-    text-align: center;
+/* ----------------------------------------- */
+
+
+/* ----------------------------------------- */
+/* FOOTER ---------------------------------- */
+/* ----------------------------------------- */
+footer {
+    position: fixed; /* Fixe le pied de page par rapport à la fenêtre du navigateur. */
+    bottom: 1vmin; /* Aligne le pied de page en bas de la fenêtre. */
+    left: 5vmin; /* Aligne le pied de page à gauche de la fenêtre. */
+    font-size: 1.5vmin; /* Définit la taille du pied de page à 4% de la plus petite dimension de la fenêtre. */
+    font-weight: 100; /* Définit l'épaisseur de la police du pied de page à 100 (ultra léger). */
+    z-index: 20;
+}
+/* ----------------------------------------- */
+
+
+/* ----------------------------------------- */
+/* HEADER ---------------------------------- */
+/* ----------------------------------------- */
+.header {
+    position: relative; /* Fixe le pied de page par rapport à la fenêtre du navigateur. */
+    top: 5vmin; /* Aligne le pied de page en bas de la fenêtre. */
+    left: 5vmin; /* Aligne le pied de page à gauche de la fenêtre. */
+    /*font-size: 4vmin; /* Définit la taille du pied de page à 4% de la plus petite dimension de la fenêtre. */
+    display: flex; /* Utilise la disposition flex pour organiser les éléments enfants. */
+    gap: 15px; /* Définit un espacement de 20 pixels entre les éléments enfants. */
+    align-items: center; /* Aligne les éléments enfants au centre verticalement. */
+}
+.logo {
+    height: 90px; /* Définit la hauteur du logo à 4% de la plus petite dimension de la fenêtre. */
+    opacity: 1;
+}
+.title {
+    display: flex; /* Utilise la disposition flex pour organiser les éléments enfants. */
+    flex-direction: column; /* Aligne les éléments enfants en colonne. */
+    align-items: baseline ; /* Aligne les éléments enfants le long de la ligne de base. */
+    justify-content: center; /* Distribue l'espace entre les éléments enfants de manière égale. */
+    /*font-size: 4vmin; /* Définit la taille de la police du titre à 4% de la plus petite dimension de la fenêtre. */
+    font-weight: 300; /* Définit l'épaisseur de la police du titre à 400 (normal). */
+    color: #252525; /* Définit la couleur du texte du titre en gris foncé. */
+    text-decoration: none; /* Supprime toute décoration de texte (comme le soulignement) du titre. */
+    transition: all .3s ease-in-out; /* Définit une transition fluide pour toutes les propriétés sur le titre. */
+}
+.name {
+    margin: 0; /* Supprime les marges autour du titre. */
+    margin-bottom: 10px;
+    font-size: 30px; /* Définit la taille de la police du titre à 2% de la plus petite dimension de la fenêtre. */
+    font-weight: 200; /* Définit l'épaisseur de la police du titre à 300 (léger). */
+    color: #252525; /* Définit la couleur du texte du titre en gris foncé. */
+    text-decoration: none; /* Supprime toute décoration de texte (comme le soulignement) du titre. */
+    transition: all .3s ease-in-out; /* Définit une transition fluide pour toutes les propriétés sur le titre. */
+}
+.job {
+    margin: 0; /* Supprime les marges autour du titre. */
+    font-size: 16px; /* Définit la taille de la police du titre à 2% de la plus petite dimension de la fenêtre. */
+    font-weight: 100; /* Définit l'épaisseur de la police du titre à 300 (léger). */
+    color: #252525; /* Définit la couleur du texte du titre en gris foncé. */
+    text-decoration: none; /* Supprime toute décoration de texte (comme le soulignement) du titre. */
+    transition: all .3s ease-in-out; /* Définit une transition fluide pour toutes les propriétés sur le titre. */
+}
+@media (max-width: 1050px) {
+    .logo {
+        height: 90px; /* Définit la hauteur du logo à 4% de la plus petite dimension de la fenêtre. */
+    }
+    .name {
+        font-size: 20px; /* Définit la taille de la police du titre à 4% de la plus petite dimension de la fenêtre. */
+    }
+    .job {
+        font-size: 11px; /* Définit la taille de la police du titre à 4% de la plus petite dimension de la fenêtre. */
+    }
+}
+@media (max-width: 465px) {
+    .logo {
+        height: 90px; /* Définit la hauteur du logo à 4% de la plus petite dimension de la fenêtre. */
+    }
+    .name {
+        font-size: 18px; /* Définit la taille de la police du titre à 4% de la plus petite dimension de la fenêtre. */
+    }
+    .job {
+        font-size: 10px; /* Définit la taille de la police du titre à 4% de la plus petite dimension de la fenêtre. */
+    }
+}
+/* ----------------------------------------- */
+
+
+/* ----------------------------------------- */
+/* NAV ------------------------------------- */
+/* ----------------------------------------- */
+.nav {
+    position: relative; /* Position relative pour le conteneur de navigation */
+    width: fit-content;
+    top: 12vmin; /* Espace de 2% de la plus petite dimension de la fenêtre en haut */
+    left: 10vmin; /* Espace de 2% de la plus petite dimension de la fenêtre à gauche */
+    z-index: 100; /* Assure que la nav est au-dessus du fond */
+}
+.nav ol {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    list-style: none; /* Supprime les puces de la liste */
+    padding: 0; /* Supprime le remplissage par défaut de la liste */
+    margin: 0; /* Supprime la marge par défaut de la liste */
+}
+.nav ol li {
+    position: relative;
+}
+.nav-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer; /* Change le curseur en main */
+    transition: all 0.3s ease;
+    position: relative;
+}
+.nav-item:hover {
+    transform: translateX(5px);
+  }
+.nav-item a {
+    pointer-events: all; /* S'assure que les liens sont cliquables */
+}
+.nav-item.active {
+    font-weight: 500;
+  }
+.nav-item.active .dot {
+    display: block;
+}
+.nav-item.active .text {
+    display: none;
+}
+.nav-item:not(.active) .dot {
+    display: none;
+}
+.nav-item:not(.active) .text {
+    display: block;
+}
+.dot {
+    margin-right: 10px;
+}
+.text {
     text-decoration: none;
-    display: inline-block;
-    font-size: 1.2rem;
-    font-weight: bold;
-} 
-button:hover { /* Button style when you have your mouse on it */
-    background-color: #dddddd; 
-    border: 2px solid #252525;
     color: #252525;
-} 
-/* ----------------------------------------- */
-
-
-body {
-    display: grid;
-    grid-template-rows: auto 1fr auto; /* Technique to put the footer on the bottom of the webpage (Header/Main/Footer) */
-    min-height: 100vh /* Make the website at least as one page */
+    font-size: 14px;
+    font-weight: 300;
 }
+/* ----------------------------------------- */
+
 
 /* ----------------------------------------- */
-/* SLIDING CONTENT ------------------------- */
+/* PAGE-CONTENT ---------------------------- */
+/* ----------------------------------------- */
+.page-content {
+    display: block;
+}
+.page {
+    display: none;
+    width: 100%;
+    min-height: 100%;
+    position: relative;
+    z-index: 10;
+}
+  .page.active {
+    display: block;
+    animation: fadeIn 0.5s ease-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+/* ----------------------------------------- */
+
+
+/* ----------------------------------------- */
+/* CONTENT (INNER-SLIDING) ----------------- */
 /* ----------------------------------------- */
 .content-inner {
+    position: absolute;
     transform: translate3d(0px, 0px, 0px);
-    height: 80vh; /* Ajuste la hauteur visible */
-    width: 60vw; /* Ajuste la largeur */
+    bottom: 0;
+    right: 0;
+    top: 0;
+    width: auto;
+    height: 84vh; /* Ajuste la hauteur visible */
     overflow-y: auto; /* Active le scroll vertical */
-    padding: 20px;
+    padding: 4vmin;
+    margin: 4vmin;
     scrollbar-width: none; /* Cache la barre de scroll sur Firefox */
 }
-
+.rectangle {
+    display: none; /* caché par défaut */
+  }
+@media (max-width: 900px) {
+    .content-inner {
+        top: 100px; /* Ajuste la position supérieure pour les écrans plus petits */
+    }
+    .rectangle {
+        display: block;
+        width  : 100vw;
+        height : 4vmin;
+        background : #f0f0f0;
+        bottom: 0;
+        z-index: 10;
+      }
+}
 /* Cache la barre de scroll sur Chrome et Edge */
 .content-inner::-webkit-scrollbar {
     display: none;
 }
-
 .project-list   {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     row-gap: 30px;
 }
-
-
+h2 {
+    font-size: 2.5rem; /* Définit la taille de la police des titres h2 à 2.5rem. */
+    font-weight: 400; /* Définit l'épaisseur de la police des titres h2 à 400 (normal). */
+    color: #252525; /* Définit la couleur du texte des titres h2 en gris foncé. */
+    text-align: center; /* Centre le texte des titres h2. */
+    text-decoration: none; /* Supprime toute décoration de texte (comme le soulignement) des titres h2. */
+    transition: all .3s ease-in-out; /* Définit une transition fluide pour toutes les propriétés sur les titres h2. */
+}
+h2:hover {
+    color: #252525;
+    background-color: #fce886;
+    text-decoration: none;
+}
+/* ----------------------------------------- */
 
 
 /* ----------------------------------------- */
