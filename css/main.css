@@ -18,6 +18,7 @@ html, body {
     transition-duration: .9s; /* Définit la durée de la transition à 0.9 seconde. */
     transition-timing-function: cubic-bezier(0.1, 0.4, 0.2, 1); /* Définit la fonction de temporisation de la transition pour un effet personnalisé. */
     margin: 0; /* Supprime les marges par défaut du navigateur. */
+    cursor: none; /* Cache le curseur par défaut du navigateur. */
 }
 html {
     scroll-behavior: smooth; /* Active un défilement fluide pour les ancres et la navigation. */
@@ -64,6 +65,29 @@ button:hover { /* Style des boutons au survol */
     background-color: #dddddd; /* Change la couleur de fond des boutons en gris clair lorsqu'ils sont survolés. */
     border: 2px solid #252525; /* Conserve la bordure en gris foncé. */
     color: #252525; /* Change la couleur du texte des boutons en gris foncé lorsqu'ils sont survolés. */
+}
+
+/* -------> 4.Cursor style */
+/* Curseur de base (le point blanc) */
+.cursor {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background-color: #252525;
+    border-radius: 50%;
+    mix-blend-mode: difference;
+    pointer-events: none;
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease;
+}
+/* Cache le curseur personnalisé et utilise le curseur système */
+.cursor-hover {
+    opacity: 0; /* Cache notre curseur personnalisé */
+}
+/* Style pour les éléments interactifs */
+[data-cursor-hover] {
+    cursor: n-resize !important;
 }
 /* ----------------------------------------- */
 
@@ -359,7 +383,7 @@ footer {
     position: relative;
     z-index: 10;
 }
-  .page.active {
+.page.active {
     display: block;
     animation: fadeIn 0.5s ease-out;
 }
@@ -380,37 +404,23 @@ footer {
     right: 0;
     top: 0;
     width: auto;
-    height: 84vh; /* Ajuste la hauteur visible */
     overflow-y: auto; /* Active le scroll vertical */
-    padding: 4vmin;
+    padding-bottom: 2vmin;
+    padding-top: 2vmin;
+    padding-left: 4vmin;
+    padding-right: 4vmin;
     margin: 4vmin;
     scrollbar-width: none; /* Cache la barre de scroll sur Firefox */
-}
-.rectangle {
-    display: none; /* caché par défaut */
-  }
-@media (max-width: 900px) {
-    .content-inner {
-        top: 100px; /* Ajuste la position supérieure pour les écrans plus petits */
-    }
-    .rectangle {
-        display: block;
-        width  : 100vw;
-        height : 4vmin;
-        background : #f0f0f0;
-        bottom: 0;
-        z-index: 10;
-      }
 }
 /* Cache la barre de scroll sur Chrome et Edge */
 .content-inner::-webkit-scrollbar {
     display: none;
 }
-.project-list   {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    row-gap: 30px;
+@media (max-width: 900px) {
+    .content-inner {
+        top: 100px; /* Ajuste la position supérieure pour les écrans plus petits */
+        border-top: none;
+    }
 }
 h2 {
     font-size: 2.5rem; /* Définit la taille de la police des titres h2 à 2.5rem. */
@@ -424,6 +434,29 @@ h2:hover {
     color: #252525;
     background-color: #fce886;
     text-decoration: none;
+}
+/* ----------------------------------------- */
+
+
+/* ----------------------------------------- */
+/* PROJECTS-PAGE CONTENT ------------------- */
+/* ----------------------------------------- */
+.project-list   {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    row-gap: 30px;
+}
+/* ----------------------------------------- */
+
+
+/* ----------------------------------------- */
+/* HOME-PAGE CONTENT ----------------------- */
+/* ----------------------------------------- */
+#home-page.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 /* ----------------------------------------- */
 

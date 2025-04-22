@@ -173,10 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
 /* ----------------------------------------- */
 
 
-
-
-
-
 /* ----------------------------------------- */
 /* INTRODUCTION ANIMATION ------------------ */
 /* ----------------------------------------- */
@@ -199,12 +195,9 @@ document.addEventListener("DOMContentLoaded", () => {
 /* ----------------------------------------- */
 
 
-
-
-
-
-
-
+/* ----------------------------------------- */
+/* NAV ------------------------------------- */
+/* ----------------------------------------- */
 // Version ultra-simplifiée pour tester
 document.querySelectorAll('.nav-item').forEach(item => {
   item.addEventListener('click', function() {
@@ -220,12 +213,12 @@ document.querySelectorAll('.nav-item').forEach(item => {
       console.log('Item cliqué :', this.getAttribute('data-page'));
   });
 });
+/* ----------------------------------------- */
 
 
-
-
-
-
+/* ----------------------------------------- */
+/* PAGE CHANGING --------------------------- */
+/* ----------------------------------------- */
 document.addEventListener("DOMContentLoaded", () => {
   // Gestion de l'écran de chargement
   const loadingScreen = document.querySelector('.loading-screen');
@@ -242,6 +235,18 @@ document.addEventListener("DOMContentLoaded", () => {
   // Navigation entre pages
   const navItems = document.querySelectorAll('.nav-item');
   const pages = document.querySelectorAll('.page');
+  const contentInner = document.querySelector('.content-inner');
+
+  function handleBorderForProjectsPage() {
+    if (window.innerWidth <= 900) {
+      const isProjectsPage = document.querySelector('#projects-page.active');
+      contentInner.style.borderTop = isProjectsPage 
+        ? '1px solid rgba(37, 37, 37, 0.1)'
+        : 'none';
+    } else {
+      contentInner.style.borderTop = 'none';
+    }
+  }
 
   function changePage(pageId) {
     // Masquer toutes les pages
@@ -258,6 +263,9 @@ document.addEventListener("DOMContentLoaded", () => {
         item.classList.add('active');
       }
     });
+
+    // Gérer la bordure pour la page projects
+    handleBorderForProjectsPage();
   }
 
   // Gestion des clics sur la navigation
@@ -276,6 +284,9 @@ document.addEventListener("DOMContentLoaded", () => {
     changePage(pageId);
   });
 
+  // Écouteur de redimensionnement
+  window.addEventListener('resize', handleBorderForProjectsPage);
+
   // Chargement initial
   const urlParams = new URLSearchParams(window.location.search);
   const initialPage = urlParams.get('page') || 'home';
@@ -290,3 +301,48 @@ document.addEventListener("DOMContentLoaded", () => {
     effects: true,
   });
 });
+/* ----------------------------------------- */
+
+
+/* ----------------------------------------- */
+/* CURSOR ---------------------------------- */
+/* ----------------------------------------- */
+document.addEventListener('DOMContentLoaded', () => {
+  const cursor = document.querySelector('.cursor');
+  
+  // Désactive le curseur par défaut sur tout le document
+  document.body.style.cursor = 'none';
+  
+  // Mouvement du curseur
+  window.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+  });
+  
+  // Éléments interactifs
+  const interactiveElements = [
+      'a', 
+      'button', 
+      '.nav-item', 
+      '.project-link', 
+      '.project-title',
+      'input',
+      'textarea',
+      'select'
+  ];
+  
+  interactiveElements.forEach(selector => {
+      document.querySelectorAll(selector).forEach(el => {
+          el.setAttribute('data-cursor-hover', '');
+          
+          el.addEventListener('mouseenter', () => {
+              cursor.classList.add('cursor-hover');
+          });
+          
+          el.addEventListener('mouseleave', () => {
+              cursor.classList.remove('cursor-hover');
+          });
+      });
+  });
+});
+/* ----------------------------------------- */
