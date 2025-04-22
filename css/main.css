@@ -402,6 +402,7 @@ footer {
         position: relative; /* Changement crucial pour mobile */
         overflow-y: scroll;
         -webkit-overflow-scrolling: touch; /* Smooth scroll iOS */
+        height: calc(100vh - 100px); /* Ajustement hauteur */
     }
     /* Correction spécifique pour iPhone */
     @supports (-webkit-touch-callout: none) {
