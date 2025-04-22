@@ -310,39 +310,45 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener('DOMContentLoaded', () => {
   const cursor = document.querySelector('.cursor');
   
-  // Désactive le curseur par défaut sur tout le document
+  // Chrome workaround - force display
+  cursor.style.display = 'block';
+  
+  // Double-check body cursor is disabled
   document.body.style.cursor = 'none';
   
-  // Mouvement du curseur
+  // More reliable mouse tracking
   window.addEventListener('mousemove', (e) => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
+      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
   });
   
-  // Éléments interactifs
-  const interactiveElements = [
-      'a', 
-      'button', 
-      '.nav-item', 
-      '.project-link', 
-      '.project-title',
-      'input',
-      'textarea',
-      'select'
-  ];
+  // Chrome-specific hover detection
+  const elements = document.querySelectorAll([
+      'a', 'button', '.nav-item',
+      '.project-link', '.project-title',
+      'input', 'textarea', 'select'
+  ].join(','));
   
-  interactiveElements.forEach(selector => {
-      document.querySelectorAll(selector).forEach(el => {
-          el.setAttribute('data-cursor-hover', '');
-          
-          el.addEventListener('mouseenter', () => {
-              cursor.classList.add('cursor-hover');
-          });
-          
-          el.addEventListener('mouseleave', () => {
-              cursor.classList.remove('cursor-hover');
-          });
+  elements.forEach(el => {
+      el.style.cursor = 'none'; // Force Chrome to use custom cursor
+      
+      el.addEventListener('mouseenter', () => {
+          cursor.style.opacity = '0';
+          el.style.cursor = 'n-resize';
       });
+      
+      el.addEventListener('mouseleave', () => {
+          cursor.style.opacity = '1';
+          el.style.cursor = 'none';
+      });
+  });
+  
+  // Chrome touch devices fallback
+  window.addEventListener('touchstart', () => {
+      cursor.style.display = 'none';
+  });
+  
+  window.addEventListener('touchend', () => {
+      cursor.style.display = 'block';
   });
 });
 /* ----------------------------------------- */

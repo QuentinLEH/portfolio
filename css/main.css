@@ -79,7 +79,9 @@ button:hover { /* Style des boutons au survol */
     pointer-events: none;
     z-index: 1000;
     transform: translate(-50%, -50%);
+    will-change: transform; /* Improves Chrome performance */
     transition: transform 0.1s ease;
+    display: block !important; /* Force display in Chrome */
 }
 /* Cache le curseur personnalisé et utilise le curseur système */
 .cursor-hover {
