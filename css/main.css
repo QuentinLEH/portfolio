@@ -18,7 +18,6 @@ html, body {
     transition-duration: .9s; /* Définit la durée de la transition à 0.9 seconde. */
     transition-timing-function: cubic-bezier(0.1, 0.4, 0.2, 1); /* Définit la fonction de temporisation de la transition pour un effet personnalisé. */
     margin: 0; /* Supprime les marges par défaut du navigateur. */
-    cursor: none; /* Cache le curseur par défaut du navigateur. */
 }
 html {
     scroll-behavior: smooth; /* Active un défilement fluide pour les ancres et la navigation. */
@@ -68,29 +67,7 @@ button:hover { /* Style des boutons au survol */
 }
 
 /* -------> 4.Cursor style */
-/* Curseur de base (le point blanc) */
-.cursor {
-    position: fixed;
-    width: 10px;
-    height: 10px;
-    background-color: #252525;
-    border-radius: 50%;
-    mix-blend-mode: difference;
-    pointer-events: none;
-    z-index: 1000;
-    transform: translate(-50%, -50%);
-    will-change: transform; /* Improves Chrome performance */
-    transition: transform 0.1s ease;
-    display: block !important; /* Force display in Chrome */
-}
-/* Cache le curseur personnalisé et utilise le curseur système */
-.cursor-hover {
-    opacity: 0; /* Cache notre curseur personnalisé */
-}
-/* Style pour les éléments interactifs */
-[data-cursor-hover] {
-    cursor: n-resize !important;
-}
+
 /* ----------------------------------------- */
 
 
