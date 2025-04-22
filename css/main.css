@@ -401,13 +401,13 @@ footer {
         border-top: none;
         position: relative; /* Changement crucial pour mobile */
         overflow-y: scroll;
-        -webkit-overflow-scrolling: touch; /* Smooth scroll iOS */
-        height: calc(100vh - 100px); /* Ajustement hauteur */
+        transform: none !important; /* Neutralise GSAP */
     }
     /* Correction spécifique pour iPhone */
     @supports (-webkit-touch-callout: none) {
         .content-inner {
-            padding-bottom: env(safe-area-inset-bottom);
+            top: constant(safe-area-inset-top, 100px);
+            top: env(safe-area-inset-top, 100px);
         }
     }
 }
