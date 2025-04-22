@@ -399,16 +399,7 @@ footer {
     .content-inner {
         top: 100px; /* Ajuste la position supérieure pour les écrans plus petits */
         border-top: none;
-        position: relative; /* Changement crucial pour mobile */
         overflow-y: scroll;
-        transform: none !important; /* Neutralise GSAP */
-    }
-    /* Correction spécifique pour iPhone */
-    @supports (-webkit-touch-callout: none) {
-        .content-inner {
-            top: constant(safe-area-inset-top, 100px);
-            top: env(safe-area-inset-top, 100px);
-        }
     }
 }
 h2 {
