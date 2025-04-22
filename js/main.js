@@ -217,10 +217,10 @@ document.querySelectorAll('.nav-item').forEach(item => {
 
 
 /* ----------------------------------------- */
-/* PAGE CHANGING --------------------------- */
+/* PAGE CHANGING - MOBILE FIXED ------------ */
 /* ----------------------------------------- */
 document.addEventListener("DOMContentLoaded", () => {
-  // Gestion de l'écran de chargement
+  // Gestion de l'écran de chargement (inchangé)
   const loadingScreen = document.querySelector('.loading-screen');
   const logo = document.querySelector('.header .logo');
   
@@ -232,22 +232,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 1000);
   }, 2500);
 
-  // Navigation entre pages
+  // Éléments DOM
   const navItems = document.querySelectorAll('.nav-item');
   const pages = document.querySelectorAll('.page');
   const contentInner = document.querySelector('.content-inner');
+  const isMobile = window.innerWidth <= 900;
 
-  function handleBorderForProjectsPage() {
+  // Détection iOS spécifique
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+  // Gestion responsive de la bordure
+  function handleLayout() {
     if (window.innerWidth <= 900) {
       const isProjectsPage = document.querySelector('#projects-page.active');
       contentInner.style.borderTop = isProjectsPage 
         ? '1px solid rgba(37, 37, 37, 0.1)'
         : 'none';
+      
+      // Adaptations spécifiques mobile
+      contentInner.style.position = isIOS ? 'relative' : 'absolute';
+      contentInner.style.height = isIOS ? 'calc(100vh - 100px)' : 'auto';
     } else {
       contentInner.style.borderTop = 'none';
+      contentInner.style.position = 'absolute';
+      contentInner.style.height = 'auto';
     }
   }
 
+  // Changement de page optimisé
   function changePage(pageId) {
     // Masquer toutes les pages
     pages.forEach(page => page.classList.remove('active'));
@@ -264,11 +277,31 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Gérer la bordure pour la page projects
-    handleBorderForProjectsPage();
+    // Reset scroll et layout
+    if (isMobile) {
+      contentInner.scrollTo(0, 0);
+      handleLayout();
+    }
   }
 
-  // Gestion des clics sur la navigation
+  // Initialisation différente selon le device
+  function initSmoothScroll() {
+    if (!isMobile) {
+      gsap.registerPlugin(ScrollSmoother);
+      ScrollSmoother.create({
+        wrapper: ".framer",
+        content: ".content-inner",
+        smooth: 3,
+        effects: true,
+      });
+    } else {
+      // Fallback scroll natif pour mobile
+      contentInner.style.overflowY = 'scroll';
+      contentInner.style.webkitOverflowScrolling = 'touch';
+    }
+  }
+
+  // Événements
   navItems.forEach(item => {
     item.addEventListener('click', (e) => {
       e.preventDefault();
@@ -278,28 +311,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Gestion du bouton retour
   window.addEventListener('popstate', (e) => {
     const pageId = (e.state && e.state.page) || 'home';
     changePage(pageId);
   });
 
-  // Écouteur de redimensionnement
-  window.addEventListener('resize', handleBorderForProjectsPage);
+  window.addEventListener('resize', () => {
+    handleLayout();
+    if (ScrollSmoother.get()) ScrollSmoother.get().kill();
+    initSmoothScroll();
+  });
 
-  // Chargement initial
+  // Initialisation
   const urlParams = new URLSearchParams(window.location.search);
   const initialPage = urlParams.get('page') || 'home';
   changePage(initialPage);
-
-  // Initialisation de GSAP ScrollSmoother
-  gsap.registerPlugin(ScrollSmoother);
-  ScrollSmoother.create({
-    wrapper: ".framer",
-    content: ".content-inner",
-    smooth: window.innerWidth > 768 ? 3 : 1.5,
-    effects: true,
-  });
+  handleLayout();
+  initSmoothScroll();
 });
 /* ----------------------------------------- */
 

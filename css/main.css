@@ -422,6 +422,15 @@ footer {
     .content-inner {
         top: 100px; /* Ajuste la position supérieure pour les écrans plus petits */
         border-top: none;
+        position: relative; /* Changement crucial pour mobile */
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch; /* Smooth scroll iOS */
+    }
+    /* Correction spécifique pour iPhone */
+    @supports (-webkit-touch-callout: none) {
+        .content-inner {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
     }
 }
 h2 {
