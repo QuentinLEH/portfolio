@@ -310,45 +310,45 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener('DOMContentLoaded', () => {
   const cursor = document.querySelector('.cursor');
   
-  // Chrome workaround - force display
-  cursor.style.display = 'block';
-  
-  // Double-check body cursor is disabled
+  // 1. Désactivation radicale du curseur système (pour Chrome et autres)
   document.body.style.cursor = 'none';
+  document.documentElement.style.cursor = 'none'; // Double protection
   
-  // More reliable mouse tracking
+  // 2. Mouvement optimisé avec translate3d (accélération matérielle)
   window.addEventListener('mousemove', (e) => {
-      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
   });
-  
-  // Chrome-specific hover detection
-  const elements = document.querySelectorAll([
-      'a', 'button', '.nav-item',
-      '.project-link', '.project-title',
-      'input', 'textarea', 'select'
-  ].join(','));
-  
-  elements.forEach(el => {
-      el.style.cursor = 'none'; // Force Chrome to use custom cursor
+
+  // 3. Gestion hybride des états (opacity + display comme fallback)
+  const handleInteractiveElements = (elements) => {
+    elements.forEach(el => {
+      // Initialisation pour Chrome
+      el.style.cursor = 'none';
       
       el.addEventListener('mouseenter', () => {
-          cursor.style.opacity = '0';
-          el.style.cursor = 'n-resize';
+        // Solution double pour couvrir tous les navigateurs
+        cursor.style.opacity = '0';
+        cursor.style.display = 'none'; // Backup pour Chrome
+        el.style.cursor = 'n-resize';
       });
       
       el.addEventListener('mouseleave', () => {
-          cursor.style.opacity = '1';
-          el.style.cursor = 'none';
+        cursor.style.opacity = '1';
+        cursor.style.display = 'block';
+        el.style.cursor = 'none';
       });
-  });
+    });
+  };
+
+  // 4. Application à tous les éléments interactifs
+  handleInteractiveElements([
+    ...document.querySelectorAll(
+      'a, button, .nav-item, .project-link, .project-title, input, textarea, select'
+    )
+  ]);
   
-  // Chrome touch devices fallback
-  window.addEventListener('touchstart', () => {
-      cursor.style.display = 'none';
-  });
-  
-  window.addEventListener('touchend', () => {
-      cursor.style.display = 'block';
-  });
+  // 5. Fallback tactile (optionnel)
+  document.addEventListener('touchstart', () => cursor.style.display = 'none');
+  document.addEventListener('touchend', () => cursor.style.display = 'block');
 });
 /* ----------------------------------------- */
