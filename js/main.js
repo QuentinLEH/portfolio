@@ -293,3 +293,21 @@ document.addEventListener("DOMContentLoaded", () => {
   changePage(initialPage);
 });
 /* ----------------------------------------- */
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  function adjustFramerHeight() {
+      const framer = document.querySelector('.framer');
+      if (framer) {
+          const windowHeight = window.innerHeight;
+          const margin = 4 * Math.min(window.innerWidth, window.innerHeight) / 100;
+          framer.style.height = `${windowHeight - 2 * margin}px`;
+      }
+  }
+
+  window.addEventListener('resize', adjustFramerHeight);
+  adjustFramerHeight(); // Initial adjustment
+});
