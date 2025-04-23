@@ -390,6 +390,7 @@ footer {
     padding-right: 4vmin;
     margin: 4vmin;
     scrollbar-width: none; /* Cache la barre de scroll sur Firefox */
+    box-sizing: border-box; /* Inclut les marges et les bordures dans les dimensions totales */
 }
 /* Cache la barre de scroll sur Chrome et Edge */
 .content-inner::-webkit-scrollbar {
