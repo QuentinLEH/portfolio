@@ -163,6 +163,7 @@ button:hover { /* Style des boutons au survol */
     box-sizing: border-box; /* Inclut les marges et les bordures dans les dimensions totales */
     border: #252525 1px solid; /* Bordure de 2 pixels en gris foncé */
     border-radius: 6px; /* Coins arrondis du conteneur */
+    height: calc(100vh - 8vmin); /* Ajustez la hauteur pour tenir compte des marges */
 }
 /* ----------------------------------------- */
 
@@ -384,13 +385,11 @@ footer {
     top: 0;
     width: auto;
     overflow-y: auto; /* Active le scroll vertical */
-    padding-bottom: 2vmin;
-    padding-top: 2vmin;
-    padding-left: 4vmin;
-    padding-right: 4vmin;
+    padding: 2vmin 4vmin;
     margin: 4vmin;
     scrollbar-width: none; /* Cache la barre de scroll sur Firefox */
     box-sizing: border-box; /* Inclut les marges et les bordures dans les dimensions totales */
+    height: calc(100% - 8vmin); /* Ajustez la hauteur pour tenir compte des marges */
 }
 /* Cache la barre de scroll sur Chrome et Edge */
 .content-inner::-webkit-scrollbar {
