@@ -398,6 +398,7 @@ footer {
 @media (max-width: 900px) {
     .content-inner {
         top: 100px; /* Ajuste la position supérieure pour les écrans plus petits */
+        bottom: 0; /* Aligne le bas de la page avec le bas de la fenêtre */
         border-top: none;
         overflow-y: scroll;
     }
