@@ -298,16 +298,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-document.addEventListener('DOMContentLoaded', () => {
-  function adjustFramerHeight() {
-      const framer = document.querySelector('.framer');
-      if (framer) {
-          const windowHeight = window.innerHeight;
-          const margin = 4 * Math.min(window.innerWidth, window.innerHeight) / 100;
-          framer.style.height = `${windowHeight - 2 * margin}px`;
-      }
-  }
+// Détection iOS
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+              (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
-  window.addEventListener('resize', adjustFramerHeight);
-  adjustFramerHeight(); // Initial adjustment
-});
+if (isIOS) {
+  document.documentElement.classList.add('ios');
+  // Corrections spécifiques iOS
+  document.querySelector('.content-inner').style.webkitOverflowScrolling = 'touch';
+}

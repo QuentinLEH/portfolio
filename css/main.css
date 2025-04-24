@@ -32,7 +32,7 @@ body {
     background-color: #f0f0f0; /* Définit la couleur de fond en gris clair. */
     display: grid; /* Utilise la disposition en grille pour organiser les éléments enfants. */
     grid-template-rows: auto 1fr auto; /* Définit trois rangées : une auto-ajustée, une flexible et une auto-ajustée, pour organiser le contenu en haut, au milieu et en bas. */
-    min-height: 100vh; /* Assure que la hauteur minimale du corps est égale à la hauteur de la fenêtre. */
+    min-height: 100%; /* Assure que la hauteur minimale du corps est égale à la hauteur de la fenêtre. */
 }
 
 /* -------> 2.Link style */
@@ -388,6 +388,7 @@ footer {
     margin: 4vmin;
     scrollbar-width: none; /* Cache la barre de scroll sur Firefox */
     box-sizing: border-box; /* Inclut les marges et les bordures dans les dimensions totales */
+    -webkit-overflow-scrolling: touch; /* Permet le défilement fluide sur iOS */
 }
 /* Cache la barre de scroll sur Chrome et Edge */
 .content-inner::-webkit-scrollbar {
