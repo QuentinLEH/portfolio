@@ -394,7 +394,7 @@ footer {
 .content-inner::-webkit-scrollbar {
     display: none;
 }
-@media (max-width: 900px) {
+@media (max-width: 650px) {
     .content-inner {
         top: 100px; /* Ajuste la position supérieure pour les écrans plus petits */
         bottom: 0; /* Aligne le bas de la page avec le bas de la fenêtre */
@@ -427,6 +427,18 @@ h2:hover {
     align-items: flex-end;
     row-gap: 30px;
 }
+.project-title {
+    margin-bottom: 0.1em; /* Ajoute un petit espace en bas du titre du projet */
+}
+.project-item {
+    position: relative; /* Nécessaire pour le positionnement */
+    display: flex;
+    flex-direction: column; /* Empile les éléments verticalement */
+    width: 100%;
+}
+.project-item span {
+    align-self: flex-end; /* Aligne le span à droite */
+}
 /* ----------------------------------------- */
 
 
@@ -437,6 +449,17 @@ h2:hover {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+}
+.home-content {
+    display: flex;
+    flex-direction: column; /* Empile les éléments verticalement */
+    gap: 10px; /* Espace entre chaque span */
+} 
+.home-content span {
+    display: block; /* Rend chaque span plein largeur */
+    align-self: flex-end;
+    /* Ou alternative avec flex: */
+    /* width: 100%; */
 }
 /* ----------------------------------------- */
 

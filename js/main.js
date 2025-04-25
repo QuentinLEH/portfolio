@@ -1,18 +1,7 @@
 /* ----------------------------------------- */
 /* SMOOTH SCROLLING ------------------------ */
 /* ----------------------------------------- */
-document.addEventListener("DOMContentLoaded", () => {
-  // Enregistrer le plugin ScrollSmoother de GSAP
-  gsap.registerPlugin(ScrollSmoother);
 
-  // Créer un effet de scroll fluide
-  ScrollSmoother.create({
-      wrapper: ".framer",   // Cible l'élément qui contient le scroll
-      content: ".content-inner",  // Cible l'élément à faire défiler
-      smooth: window.innerWidth > 768 ? 3 : 1.5,  // Fluidité du scroll (plus faible sur mobile)
-      effects: true,  // Active les effets d'animation pendant le scroll
-  });
-});
 /* ----------------------------------------- */
 
 
@@ -295,9 +284,9 @@ document.addEventListener("DOMContentLoaded", () => {
 /* ----------------------------------------- */
 
 
-
-
-
+/* ----------------------------------------- */
+/* IOS FIXED --------------------------- */
+/* ----------------------------------------- */
 // Détection iOS
 const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
               (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
@@ -307,3 +296,4 @@ if (isIOS) {
   // Corrections spécifiques iOS
   document.querySelector('.content-inner').style.webkitOverflowScrolling = 'touch';
 }
+/* ----------------------------------------- */
