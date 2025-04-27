@@ -61,9 +61,10 @@ button {
     font-weight: 300; /* Définit l'épaisseur de la police des boutons en gras. */
 }
 button:hover { /* Style des boutons au survol */
-    background-color: transparent; /* Change la couleur de fond des boutons en gris clair lorsqu'ils sont survolés. */
+    background-color: #fce886; /* Change la couleur de fond des boutons en gris clair lorsqu'ils sont survolés. */
     border: 1px solid #252525; /* Conserve la bordure en gris foncé. */
     color: #252525; /* Change la couleur du texte des boutons en gris foncé lorsqu'ils sont survolés. */
+    transition: all 0.3s ease;
 }
 
 /* -------> 4.Cursor style */
@@ -478,11 +479,6 @@ h2:hover {
     max-width: 100%; /* S'assure qu'il ne dépasse pas */
     text-align: center;
     cursor: pointer;
-    transition: all 0.3s ease;
-}
-.cta-home:hover {
-    background-color: transparent;
-    color: #252525;
 }
 /* ----------------------------------------- */
 
