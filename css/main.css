@@ -44,30 +44,38 @@ a:focus-visible { /* Style des liens lorsqu'ils sont focusés via la navigation 
 }
 a:hover { /* Style des liens au survol */
     background-color: #fce886;
+    transition: all 0.3s ease;
 }
 
 /* -------> 3.Button style */
 button {
-    cursor: pointer; /* Change le curseur en pointeur lorsqu'il survole un bouton. */
     background-color: #252525; /* Définit la couleur de fond des boutons en gris foncé. */
-    border: 2px solid #252525; /* Ajoute une bordure de 2 pixels en gris foncé autour des boutons. */
-    border-radius: 12px; /* Arrondit les coins des boutons avec un rayon de 12 pixels. */
+    border: 1px solid #252525; /* Ajoute une bordure de 2 pixels en gris foncé autour des boutons. */
+    border-radius: 5px; /* Arrondit les coins des boutons avec un rayon de 12 pixels. */
     color: #dddddd; /* Définit la couleur du texte des boutons en gris clair. */
     padding: 2%; /* Ajoute un espace intérieur autour du contenu des boutons, proportionnel à leur taille. */
     text-align: center; /* Centre le texte à l'intérieur des boutons. */
     text-decoration: none; /* Supprime toute décoration de texte (comme le soulignement) des boutons. */
     display: inline-block; /* Affiche les boutons comme des éléments en ligne-bloc, permettant de définir des dimensions. */
-    font-size: 1.2rem; /* Définit la taille de la police des boutons à 1.2rem. */
-    font-weight: bold; /* Définit l'épaisseur de la police des boutons en gras. */
+    font-size: 14px; /* Définit la taille de la police des boutons à 1.2rem. */
+    font-weight: 300; /* Définit l'épaisseur de la police des boutons en gras. */
 }
 button:hover { /* Style des boutons au survol */
-    background-color: #dddddd; /* Change la couleur de fond des boutons en gris clair lorsqu'ils sont survolés. */
-    border: 2px solid #252525; /* Conserve la bordure en gris foncé. */
+    background-color: transparent; /* Change la couleur de fond des boutons en gris clair lorsqu'ils sont survolés. */
+    border: 1px solid #252525; /* Conserve la bordure en gris foncé. */
     color: #252525; /* Change la couleur du texte des boutons en gris foncé lorsqu'ils sont survolés. */
 }
 
 /* -------> 4.Cursor style */
-
+html {
+    cursor: crosshair;
+}
+a:hover {
+    cursor: n-resize;
+}
+button:hover { 
+    cursor: n-resize;
+}
 /* ----------------------------------------- */
 
 
@@ -463,6 +471,18 @@ h2:hover {
     align-self: flex-end;
     /* Ou alternative avec flex: */
     /* width: 100%; */
+}
+/* -------> Home button style */
+.cta-home {
+    width: 100%; /* Prend toute la largeur du conteneur */
+    max-width: 100%; /* S'assure qu'il ne dépasse pas */
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.cta-home:hover {
+    background-color: transparent;
+    color: #252525;
 }
 /* ----------------------------------------- */
 

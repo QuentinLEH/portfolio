@@ -208,6 +208,37 @@ document.querySelectorAll('.nav-item').forEach(item => {
 /* ----------------------------------------- */
 /* PAGE CHANGING --------------------------- */
 /* ----------------------------------------- */
+// Fonction globale pour changer de page
+window.changePage = function(pageId) {
+  // Masquer toutes les pages
+  document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+  
+  // Afficher la page sélectionnée
+  const activePage = document.getElementById(`${pageId}-page`);
+  if (activePage) activePage.classList.add('active');
+  
+  // Mettre à jour la navigation
+  document.querySelectorAll('.nav-item').forEach(item => {
+    item.classList.remove('active');
+    if (item.getAttribute('data-page') === pageId) {
+      item.classList.add('active');
+    }
+  });
+
+  // Gérer la bordure pour la page projects
+  const contentInner = document.querySelector('.content-inner');
+  if (window.innerWidth <= 900) {
+    const isProjectsPage = pageId === 'projects';
+    contentInner.style.borderTop = isProjectsPage 
+      ? '1px solid rgba(37, 37, 37, 0.1)'
+      : 'none';
+  } else {
+    contentInner.style.borderTop = 'none';
+  }
+
+  history.pushState({ page: pageId }, '', `?page=${pageId}`);
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   // Gestion de l'écran de chargement
   const loadingScreen = document.querySelector('.loading-screen');
@@ -237,33 +268,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function changePage(pageId) {
-    // Masquer toutes les pages
-    pages.forEach(page => page.classList.remove('active'));
-    
-    // Afficher la page sélectionnée
-    const activePage = document.getElementById(`${pageId}-page`);
-    if (activePage) activePage.classList.add('active');
-    
-    // Mettre à jour la navigation
-    navItems.forEach(item => {
-      item.classList.remove('active');
-      if (item.getAttribute('data-page') === pageId) {
-        item.classList.add('active');
-      }
-    });
-
-    // Gérer la bordure pour la page projects
-    handleBorderForProjectsPage();
-  }
-
   // Gestion des clics sur la navigation
   navItems.forEach(item => {
     item.addEventListener('click', (e) => {
       e.preventDefault();
       const pageId = item.getAttribute('data-page');
       changePage(pageId);
-      history.pushState({ page: pageId }, '', `?page=${pageId}`);
     });
   });
 
