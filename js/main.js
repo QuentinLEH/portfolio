@@ -165,22 +165,38 @@ document.addEventListener('DOMContentLoaded', () => {
 /* ----------------------------------------- */
 /* INTRODUCTION ANIMATION ------------------ */
 /* ----------------------------------------- */
-// Ajoutez ceci à votre fichier JavaScript
-document.addEventListener("DOMContentLoaded", () => {
+// Solution garantie pour le centrage
+function initLoader() {
   const loadingScreen = document.querySelector('.loading-screen');
-  const logo = document.querySelector('.header .logo');
+  const video = document.querySelector('.video-intro');
+  
+  // Fonction de centrage absolu
+  const centerVideo = () => {
+    const vh = window.innerHeight;
+    const videoHeight = video.offsetHeight;
+    video.style.position = 'absolute';
+    video.style.top = `${(vh - videoHeight) / 2}px`;
+  };
 
-  // Attendez la fin de l'animation de la vidéo
+  // Appliquer immédiatement et au redimensionnement
+  centerVideo();
+  window.addEventListener('resize', centerVideo);
+
+  // Disparition progressive
   setTimeout(() => {
-    loadingScreen.classList.add('hidden');
-
-    // Supprimez l'écran de chargement après la transition
+    loadingScreen.style.transition = 'opacity 1s ease-out';
+    loadingScreen.style.opacity = '0';
+    
     setTimeout(() => {
       loadingScreen.remove();
-      logo.classList.add('visible'); // Rendre le logo visible sur la landing page
-    }, 1000); // Correspond à la durée de la transition CSS
-  }, 1500); // Durée totale de l'animation de la vidéo
-});
+      document.querySelector('.header .logo').classList.add('visible');
+      window.removeEventListener('resize', centerVideo);
+    }, 1000);
+  }, 1500);
+}
+
+// Démarrer quand tout est prêt
+window.addEventListener('load', initLoader);
 /* ----------------------------------------- */
 
 
