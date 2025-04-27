@@ -211,9 +211,9 @@ button:hover { /* Style des boutons au survol */
 footer {
     position: fixed; /* Fixe le pied de page par rapport à la fenêtre du navigateur. */
     bottom: 1vmin; /* Aligne le pied de page en bas de la fenêtre. */
-    left: 5vmin; /* Aligne le pied de page à gauche de la fenêtre. */
+    right: 5vmin; /* Aligne le pied de page à gauche de la fenêtre. */
     font-size: 1.5vmin; /* Définit la taille du pied de page à 4% de la plus petite dimension de la fenêtre. */
-    font-weight: 100; /* Définit l'épaisseur de la police du pied de page à 100 (ultra léger). */
+    font-weight: 200; /* Définit l'épaisseur de la police du pied de page à 100 (ultra léger). */
     z-index: 20;
 }
 /* ----------------------------------------- */
@@ -430,6 +430,8 @@ h2:hover {
 .project-title {
     margin-bottom: 0.1em; /* Ajoute un petit espace en bas du titre du projet */
     margin-top: 0.1em; /* Ajoute un petit espace en bas du titre du projet */
+    display: flex;
+    justify-content: flex-end;
 }
 .project-item {
     position: relative; /* Nécessaire pour le positionnement */
@@ -482,17 +484,24 @@ h2:hover {
     margin-top: 0.1em; /* Ajoute un petit espace en bas du titre du projet */
     align-self: flex-end; /* Aligne le titre à droite */
 }
-.about-content span {
-    display: block; /* Rend chaque span plein largeur */
-    align-self: flex-end;
-    /* Ou alternative avec flex: */
-    /* width: 100%; */
+.about-item h3 {
+    margin-top: 0.5em; /* Ajoute un petit espace en bas du titre du projet */
+    margin-bottom: 0.1em;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 18px;
+    font-weight: 300;
+}
+.about-item span {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 14px;
+    font-weight: 100;
 }
 .about-item {
     align-self: flex-end; /* Aligne le titre à droite */
 }
-.about-item-last {
-    align-self: flex-end; /* Aligne le titre à droite */
+.last {
     margin-bottom: 4em; /* Ajoute un petit espace en bas du titre du projet */
 }
 /* ----------------------------------------- */
