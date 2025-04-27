@@ -464,6 +464,39 @@ h2:hover {
 }
 /* ----------------------------------------- */
 
+/* ----------------------------------------- */
+/* ABOUT-PAGE CONTENT ----------------------- */
+/* ----------------------------------------- */
+#about-page.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.about-content {
+    display: flex;
+    flex-direction: column; /* Empile les éléments verticalement */
+    gap: 10px; /* Espace entre chaque span */
+}
+.about-content h2 {
+    margin-bottom: 0.1em; /* Ajoute un petit espace en bas du titre du projet */
+    margin-top: 0.1em; /* Ajoute un petit espace en bas du titre du projet */
+    align-self: flex-end; /* Aligne le titre à droite */
+}
+.about-content span {
+    display: block; /* Rend chaque span plein largeur */
+    align-self: flex-end;
+    /* Ou alternative avec flex: */
+    /* width: 100%; */
+}
+.about-item {
+    align-self: flex-end; /* Aligne le titre à droite */
+}
+.about-item-last {
+    align-self: flex-end; /* Aligne le titre à droite */
+    margin-bottom: 4em; /* Ajoute un petit espace en bas du titre du projet */
+}
+/* ----------------------------------------- */
+
 
 /* ----------------------------------------- */
 /* GSAP TRY -------------------------------- */
