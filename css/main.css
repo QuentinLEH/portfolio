@@ -244,7 +244,7 @@ footer {
     margin: 0; /* Supprime les marges autour du titre. */
     margin-bottom: 10px;
     font-size: 25px; /* Définit la taille de la police du titre à 2% de la plus petite dimension de la fenêtre. */
-    font-weight: 200; /* Définit l'épaisseur de la police du titre à 300 (léger). */
+    font-weight: 900; /* Définit l'épaisseur de la police du titre à 300 (léger). */
     color: #252525; /* Définit la couleur du texte du titre en gris foncé. */
     text-decoration: none; /* Supprime toute décoration de texte (comme le soulignement) du titre. */
 }
