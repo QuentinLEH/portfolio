@@ -35,8 +35,9 @@ body {
     min-height: 100%; /* Assure que la hauteur minimale du corps est égale à la hauteur de la fenêtre. */
 }
 h1, h2 {
-    font-family: "Roboto Flex", sans-serif;
+    font-family: 'Roboto Flex', sans-serif;
     font-weight: 900; /* Équivalent à Arial Black */
+    font-variation-settings: 'wght' 900, 'opsz' 144;
     color: #252525;
 }
 
@@ -398,7 +399,7 @@ footer {
 }
 h2 {
     font-size: 2rem; /* Définit la taille de la police des titres h2 à 2.5rem. */
-    font-weight: 100; /* Définit l'épaisseur de la police des titres h2 à 400 (normal). */
+    font-weight: 900; /* Définit l'épaisseur de la police des titres h2 à 400 (normal). */
     color: #252525; /* Définit la couleur du texte des titres h2 en gris foncé. */
     text-align: center; /* Centre le texte des titres h2. */
     text-decoration: none; /* Supprime toute décoration de texte (comme le soulignement) des titres h2. */
@@ -598,6 +599,7 @@ h2:hover {
 .container-form button {
     width: auto;
     font-family: "Roboto Flex", sans-serif;
+    font-weight: 900; /* Équivalent à Arial Black */
     cursor: n-resize;
 }
 .error {
@@ -613,11 +615,6 @@ h2:hover {
     padding: 10px;
 }
 /* ----------------------------------------- */
-
-
-
-
-
 
 
 /* ----------------------------------------- */
@@ -639,12 +636,10 @@ h2:hover {
         background: transparent;
         border-radius: 4px;
     }
-
     .mobile-toggle svg {
         width: 80%;
         height: 80%;
     }
-
     /* Animation style #4 */
     .mobile-toggle .line {
         fill: none;
@@ -652,8 +647,7 @@ h2:hover {
         stroke: #252525;
         stroke-width: 5.5;
         stroke-linecap: round;
-    }
-    
+    }   
     .mobile-toggle .top {
         stroke-dasharray: 40 121;
     }
@@ -669,25 +663,20 @@ h2:hover {
     .mobile-toggle.active .bottom {
         stroke-dashoffset: -68px;
     }
-
     /* État initial */
     .nav {
         display: none;
-    }
-    
+    }  
     .content-inner {
         display: block;
     }
-
     /* État actif */
     .mobile-active .nav {
         display: block;
-    }
-    
+    }   
     .mobile-active .content-inner {
         display: none;
     }
-
     /* Style pour les liens du menu */
     .mobile-active .nav a {
         display: block;
@@ -696,7 +685,6 @@ h2:hover {
         text-decoration: none;
         font-size: 1.2em;
     }
-
     .mobile-active .nav a:hover {
         background-color: rgba(240, 240, 240, 0.5);
     }

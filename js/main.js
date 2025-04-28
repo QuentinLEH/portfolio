@@ -370,11 +370,9 @@ document.getElementById('registrationForm').addEventListener('submit', async fun
 /* ----------------------------------------- */
 
 
-
-
-
-
-
+/* ----------------------------------------- */
+/* MOBILE MENU ----------------------------- */
+/* ----------------------------------------- */
 function setupMobileToggle() {
   let mobileToggle = null;
 
@@ -423,3 +421,4 @@ function setupMobileToggle() {
 }
 
 document.addEventListener('DOMContentLoaded', setupMobileToggle);
+/* ----------------------------------------- */
