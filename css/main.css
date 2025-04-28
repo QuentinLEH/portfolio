@@ -413,6 +413,38 @@ h2:hover {
 
 
 /* ----------------------------------------- */
+/* HOME-PAGE CONTENT ----------------------- */
+/* ----------------------------------------- */
+#home-page.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.home-content {
+    display: flex;
+    flex-direction: column; /* Empile les éléments verticalement */
+    gap: 10px; /* Espace entre chaque span */
+} 
+.home-content span {
+    display: block; /* Rend chaque span plein largeur */
+    align-self: flex-end;
+    /* Ou alternative avec flex: */
+    /* width: 100%; */
+}
+/* -------> Home button style */
+.cta-home {
+    width: 100%; /* Prend toute la largeur du conteneur */
+    max-width: 100%; /* S'assure qu'il ne dépasse pas */
+    text-align: center;
+    cursor: pointer;
+    font-family: "Roboto Flex", sans-serif;
+    font-weight: 900; /* Équivalent à Arial Black */
+    font-size: 0.7rem;
+}
+/* ----------------------------------------- */
+
+
+/* ----------------------------------------- */
 /* PROJECTS-PAGE CONTENT ------------------- */
 /* ----------------------------------------- */
 .project-list   {
@@ -455,37 +487,6 @@ h2:hover {
 }
 /* ----------------------------------------- */
 
-
-/* ----------------------------------------- */
-/* HOME-PAGE CONTENT ----------------------- */
-/* ----------------------------------------- */
-#home-page.active {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-}
-.home-content {
-    display: flex;
-    flex-direction: column; /* Empile les éléments verticalement */
-    gap: 10px; /* Espace entre chaque span */
-} 
-.home-content span {
-    display: block; /* Rend chaque span plein largeur */
-    align-self: flex-end;
-    /* Ou alternative avec flex: */
-    /* width: 100%; */
-}
-/* -------> Home button style */
-.cta-home {
-    width: 100%; /* Prend toute la largeur du conteneur */
-    max-width: 100%; /* S'assure qu'il ne dépasse pas */
-    text-align: center;
-    cursor: pointer;
-    font-family: "Roboto Flex", sans-serif;
-    font-weight: 900; /* Équivalent à Arial Black */
-    font-size: 0.7rem;
-}
-/* ----------------------------------------- */
 
 /* ----------------------------------------- */
 /* ABOUT-PAGE CONTENT ----------------------- */
@@ -543,7 +544,72 @@ h2:hover {
     align-items: flex-end;
     gap: 10px; /* Espace entre chaque span */
 } 
+/* ----------------------------------------- */
+
 
 /* ----------------------------------------- */
-/* GSAP TRY -------------------------------- */
+/* SERVICES-PAGE CONTENT ------------------- */
+/* ----------------------------------------- */
+#services-page.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+#services-page .content-inner {
+    padding-right: 4vmin;
+}
+.services-content span {
+    display: block; /* Rend chaque span plein largeur */
+    align-self: flex-end;
+    margin-bottom: 10px;
+}
+.container-form {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    margin-top: 30px;
+}
+.form-row {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+.form-row label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    font-weight: 300;
+    margin-bottom: 5px;
+    color: #252525;
+}
+.form-row input,
+.form-row textarea {
+    width: auto;
+    padding: 12px;
+    border: 1px solid #252525;
+    border-radius: 4px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 14px;
+    background: rgba(255,255,255,0.8);
+}
+.form-row textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+.container-form button {
+    width: auto;
+    font-family: "Roboto Flex", sans-serif;
+    cursor: n-resize;
+}
+.error {
+    font-size: 11px;
+    color: #ff3333;
+    margin-top: 5px;
+}
+/* Nouveaux styles */
+#formFeedback {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 14px;
+    text-align: right;
+    padding: 10px;
+}
 /* ----------------------------------------- */

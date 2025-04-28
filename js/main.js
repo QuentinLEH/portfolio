@@ -241,10 +241,10 @@ window.changePage = function(pageId) {
     }
   });
 
-  // Gérer la bordure pour les pages projects et about
+  // Gérer la bordure pour les pages projects, about et services
   const contentInner = document.querySelector('.content-inner');
   if (window.innerWidth <= 900) {
-    const needsBorder = pageId === 'projects' || pageId === 'about';
+    const needsBorder = pageId === 'projects' || pageId === 'about' || pageId === 'services';
     contentInner.style.borderTop = needsBorder 
       ? '1px solid rgba(37, 37, 37, 0.1)'
       : 'none';
@@ -276,7 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function handleBorderForPages() {
     if (window.innerWidth <= 900) {
       const activePage = document.querySelector('.page.active');
-      const needsBorder = activePage.id === 'projects-page' || activePage.id === 'about-page';
+      const needsBorder = activePage.id === 'projects-page' || activePage.id === 'about-page' || activePage.id === 'services-page';
       contentInner.style.borderTop = needsBorder 
         ? '1px solid rgba(37, 37, 37, 0.1)'
         : 'none';
@@ -324,3 +324,46 @@ if (isIOS) {
   document.querySelector('.content-inner').style.webkitOverflowScrolling = 'touch';
 }
 /* ----------------------------------------- */
+
+
+
+
+
+// Formspree Submission
+document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const feedbackDiv = document.getElementById('formFeedback');
+  const originalBtnText = submitBtn.textContent;
+
+  // Désactiver le bouton pendant l'envoi
+  submitBtn.textContent = "SENDING...";
+  submitBtn.disabled = true;
+  feedbackDiv.textContent = "";
+  feedbackDiv.style.color = "inherit";
+
+  try {
+      const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: {
+              'Accept': 'application/json'
+          }
+      });
+
+      if (response.ok) {
+          feedbackDiv.textContent = "✓ Message sent successfully!";
+          feedbackDiv.style.color = "#4CAF50";
+          form.reset();
+      } else {
+          throw new Error('Submission failed');
+      }
+  } catch (error) {
+      feedbackDiv.textContent = "✗ Error: Please try again later";
+      feedbackDiv.style.color = "#f44336";
+  } finally {
+      submitBtn.textContent = originalBtnText;
+      submitBtn.disabled = false;
+  }
+});
