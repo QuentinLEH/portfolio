@@ -35,7 +35,7 @@ body {
     min-height: 100%; /* Assure que la hauteur minimale du corps est égale à la hauteur de la fenêtre. */
 }
 h1, h2 {
-    font-family: Arial black, sans-serif; /* Définit la police des titres h1 et h2 à Impact. */
+    font-family: Arial black, sans-serif;
     font-weight: 100;
     color: #252525;
 }
