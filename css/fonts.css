@@ -2,17 +2,15 @@
 @font-face {
     font-family: 'Roboto Flex';
     src: url('../fonts/RobotoFlex.woff2') format('woff2');
-    font-weight: 100 900; /* Plage complète */
+    font-weight: 100 900;
     font-style: normal;
-    font-display: swap; /* Évite le FOIT (Flash of Invisible Text) */
-    unicode-range: U+0000-00FF; /* Caractères latins seulement */
-}
-
-@font-face {
+    font-display: swap;
+  }
+  
+  @font-face {
     font-family: 'JetBrains Mono';
     src: url('../fonts/JetBrainsMono.woff2') format('woff2');
     font-weight: 100 800;
     font-style: normal;
     font-display: swap;
-    unicode-range: U+0000-00FF;
-}
+  }
