@@ -375,84 +375,51 @@ document.getElementById('registrationForm').addEventListener('submit', async fun
 
 
 
+function setupMobileToggle() {
+  let mobileToggle = null;
 
-/* ----------------------------------------- */
-/* MOBILE MENU TOGGLE (VERSION FINALE) ----- */
-/* ----------------------------------------- */
-document.addEventListener('DOMContentLoaded', function() {
-  let hamburgerBtn = null;
-  let menuOverlay = null;
-  let clonedTitle = null;
-  let clonedNav = null;
+  function handleToggle() {
+      if (window.innerWidth <= 430) {
+          if (!mobileToggle) {
+              mobileToggle = document.createElement('div');
+              mobileToggle.className = 'mobile-toggle';
+              mobileToggle.innerHTML = `
+                  <svg viewBox="0 0 100 100">
+                      <path class="line top" d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
+                      <path class="line middle" d="m 70,50 h -40" />
+                      <path class="line bottom" d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
+                  </svg>
+              `;
+              document.body.appendChild(mobileToggle);
 
-  function initMobileMenu() {
-      // Supprime les anciens éléments s'ils existent
-      if (hamburgerBtn) hamburgerBtn.remove();
-      if (menuOverlay) menuOverlay.remove();
+              mobileToggle.addEventListener('click', function() {
+                  this.classList.toggle('active');
+                  document.body.classList.toggle('mobile-active');
+              });
 
-      // Crée le bouton hamburger
-      hamburgerBtn = document.createElement('div');
-      hamburgerBtn.className = 'hamburger-btn';
-      hamburgerBtn.innerHTML = '<span></span><span></span><span></span>';
-      document.body.appendChild(hamburgerBtn);
-
-      // Crée l'overlay du menu
-      menuOverlay = document.createElement('div');
-      menuOverlay.className = 'menu-overlay';
-      
-      // Clone les éléments avec tous leurs événements
-      const originalTitle = document.querySelector('.title');
-      const originalNav = document.querySelector('.nav');
-      
-      clonedTitle = originalTitle.cloneNode(true);
-      clonedNav = originalNav.cloneNode(true);
-      
-      // Réattache les événements de navigation
-      clonedNav.querySelectorAll('.nav-item').forEach(item => {
-          item.addEventListener('click', function(e) {
-              e.preventDefault();
-              const pageId = this.getAttribute('data-page');
-              window.changePage(pageId); // Utilise votre fonction existante
-              
-              // Ferme le menu
-              hamburgerBtn.classList.remove('open');
-              menuOverlay.classList.remove('active');
-          });
-      });
-
-      menuOverlay.appendChild(clonedTitle);
-      menuOverlay.appendChild(clonedNav);
-      document.body.appendChild(menuOverlay);
-
-      // Gestion du clic sur le hamburger
-      hamburgerBtn.addEventListener('click', function(e) {
-          e.stopPropagation();
-          this.classList.toggle('open');
-          menuOverlay.classList.toggle('active');
-      });
-  }
-
-  function handleResize() {
-      if (window.innerWidth <= 400) {
-          if (!hamburgerBtn) {
-              initMobileMenu();
+              // Fermer le menu après un clic sur un lien
+              const navLinks = document.querySelectorAll('.nav a');
+              navLinks.forEach(link => {
+                  link.addEventListener('click', function() {
+                      document.body.classList.remove('mobile-active');
+                      mobileToggle.classList.remove('active');
+                  });
+              });
           }
       } else {
-          // Restaure l'affichage normal
-          if (hamburgerBtn) {
-              hamburgerBtn.remove();
-              menuOverlay.remove();
-              hamburgerBtn = null;
-              menuOverlay = null;
+          if (mobileToggle) {
+              mobileToggle.remove();
+              mobileToggle = null;
+              document.body.classList.remove('mobile-active');
           }
-          document.querySelector('.title').style.display = 'flex';
-          document.querySelector('.nav').style.display = 'block';
       }
   }
 
-  // Initialisation
-  handleResize();
+  // Initial setup
+  handleToggle();
   
-  // Surveillance du redimensionnement
-  window.addEventListener('resize', handleResize);
-});
+  // Handle resize
+  window.addEventListener('resize', handleToggle);
+}
+
+document.addEventListener('DOMContentLoaded', setupMobileToggle);

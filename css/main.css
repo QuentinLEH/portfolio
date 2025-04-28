@@ -621,80 +621,83 @@ h2:hover {
 
 
 /* ----------------------------------------- */
-/* MOBILE MENU HAMBURGER (<= 400px) -------- */
+/* MOBILE TOGGLE (<= 400px) ---------------- */
 /* ----------------------------------------- */
-@media (max-width: 400px) {
-    /* Cache TOUJOURS les éléments originaux en mobile */
-    .title, .nav {
-        display: none;
-    }
-
-    /* Bouton hamburger */
-    .hamburger-btn {
+@media (max-width: 430px) {
+    /* Bouton hamburger style #4 - version grande et centrée */
+    .mobile-toggle {
         position: fixed;
-        top: 6vmin;
-        right: 6vmin;
-        width: 30px;
-        height: 30px;
-        z-index: 9999;
-        background: transparent;
+        top: 35px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        z-index: 1000;
+        cursor: pointer;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
         align-items: center;
-        gap: 5px;
-    }
-
-    .hamburger-btn span {
-        display: block;
-        width: 22px;
-        height: 2px;
-        background: #252525;
-        transition: all 0.3s;
-    }
-
-    /* État ouvert */
-    .hamburger-btn.open {
+        justify-content: center;
         background: transparent;
+        border-radius: 4px;
+    }
+
+    .mobile-toggle svg {
+        width: 80%;
+        height: 80%;
+    }
+
+    /* Animation style #4 */
+    .mobile-toggle .line {
+        fill: none;
+        transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+        stroke: #252525;
+        stroke-width: 5.5;
+        stroke-linecap: round;
     }
     
-    .hamburger-btn.open span {
-        background: #252525;
+    .mobile-toggle .top {
+        stroke-dasharray: 40 121;
+    }
+    .mobile-toggle .bottom {
+        stroke-dasharray: 40 121;
+    }
+    .mobile-toggle.active {
+        transform: rotate(45deg);
+    }
+    .mobile-toggle.active .top {
+        stroke-dashoffset: -68px;
+    }
+    .mobile-toggle.active .bottom {
+        stroke-dashoffset: -68px;
     }
 
-    /* Overlay du menu - maintenant dans la frame */
-    .menu-overlay {
-        position: fixed;
-        top: 4.1vmin;
-        left: 4.1vmin;
-        right: 4.1vmin;
-        bottom: 4.1vmin;
-        background: #f0f0f0;
-        z-index: 9998;
+    /* État initial */
+    .nav {
         display: none;
-        padding: 20px;
-        overflow-y: auto;
-        border: 1px solid #252525;
-        border-radius: 6px;
     }
-
-    .menu-overlay.active {
+    
+    .content-inner {
         display: block;
     }
 
-    /* Styles spécifiques pour le contenu cloné */
-    .menu-overlay .title {
-        display: flex !important;
-        flex-direction: column;
-        margin-bottom: 30px;
+    /* État actif */
+    .mobile-active .nav {
+        display: block;
+    }
+    
+    .mobile-active .content-inner {
+        display: none;
     }
 
-    .menu-overlay .nav {
-        display: block !important;
+    /* Style pour les liens du menu */
+    .mobile-active .nav a {
+        display: block;
+        padding: 10px 15px;
+        color: #252525;
+        text-decoration: none;
+        font-size: 1.2em;
     }
 
-    .menu-overlay .nav ol {
-        flex-direction: column;
-        gap: 20px;
+    .mobile-active .nav a:hover {
+        background-color: rgba(240, 240, 240, 0.5);
     }
 }
