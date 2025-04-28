@@ -35,8 +35,8 @@ body {
     min-height: 100%; /* Assure que la hauteur minimale du corps est égale à la hauteur de la fenêtre. */
 }
 h1, h2 {
-    font-family: Arial black, sans-serif;
-    font-weight: 100;
+    font-family: "Roboto Flex", sans-serif;
+    font-weight: 900; /* Équivalent à Arial Black */
     color: #252525;
 }
 
@@ -481,7 +481,8 @@ h2:hover {
     max-width: 100%; /* S'assure qu'il ne dépasse pas */
     text-align: center;
     cursor: pointer;
-    font-family: Arial black, sans-serif;
+    font-family: "Roboto Flex", sans-serif;
+    font-weight: 900; /* Équivalent à Arial Black */
     font-size: 0.7rem;
 }
 /* ----------------------------------------- */
