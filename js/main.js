@@ -241,11 +241,11 @@ window.changePage = function(pageId) {
     }
   });
 
-  // Gérer la bordure pour la page projects
+  // Gérer la bordure pour les pages projects et about
   const contentInner = document.querySelector('.content-inner');
   if (window.innerWidth <= 900) {
-    const isProjectsPage = pageId === 'projects';
-    contentInner.style.borderTop = isProjectsPage 
+    const needsBorder = pageId === 'projects' || pageId === 'about';
+    contentInner.style.borderTop = needsBorder 
       ? '1px solid rgba(37, 37, 37, 0.1)'
       : 'none';
   } else {
@@ -273,10 +273,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const pages = document.querySelectorAll('.page');
   const contentInner = document.querySelector('.content-inner');
 
-  function handleBorderForProjectsPage() {
+  function handleBorderForPages() {
     if (window.innerWidth <= 900) {
-      const isProjectsPage = document.querySelector('#projects-page.active');
-      contentInner.style.borderTop = isProjectsPage 
+      const activePage = document.querySelector('.page.active');
+      const needsBorder = activePage.id === 'projects-page' || activePage.id === 'about-page';
+      contentInner.style.borderTop = needsBorder 
         ? '1px solid rgba(37, 37, 37, 0.1)'
         : 'none';
     } else {
@@ -300,7 +301,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Écouteur de redimensionnement
-  window.addEventListener('resize', handleBorderForProjectsPage);
+  window.addEventListener('resize', handleBorderForPages);
 
   // Chargement initial
   const urlParams = new URLSearchParams(window.location.search);

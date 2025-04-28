@@ -34,10 +34,16 @@ body {
     grid-template-rows: auto 1fr auto; /* Définit trois rangées : une auto-ajustée, une flexible et une auto-ajustée, pour organiser le contenu en haut, au milieu et en bas. */
     min-height: 100%; /* Assure que la hauteur minimale du corps est égale à la hauteur de la fenêtre. */
 }
+h1, h2 {
+    font-family: Arial black, sans-serif; /* Définit la police des titres h1 et h2 à Impact. */
+    font-weight: 100;
+    color: #252525;
+}
 
 /* -------> 2.Link style */
 a {
-    text-decoration: none; /* Souligne le texte des liens. */
+    text-decoration: none; 
+    color: #252525; /* Définit la couleur du texte des liens en gris foncé. */
 }
 a:focus-visible { /* Style des liens lorsqu'ils sont focusés via la navigation au clavier (accessibilité) */
     border: 5px solid #ff0000; /* Ajoute une bordure rouge de 5 pixels autour des liens focusés. */
@@ -100,9 +106,8 @@ button:hover {
     background-color: #fff;
     z-index: 9999;
     overflow: hidden;
-  }
-  
-  .video-intro {
+} 
+.video-intro {
     width: min(80vw, 400px);
     height: auto;
     display: block;
@@ -111,14 +116,13 @@ button:hover {
     left: auto;
     transform: none;
     animation: fadeScale 1.5s ease-out forwards;
-  }
-  
-  @keyframes fadeScale {
+} 
+@keyframes fadeScale {
     0% { transform: scale(1); opacity: 1; }
     50% { transform: scale(1.4); opacity: 1; }
-    70% { opacity: 0.6; }
+    65% { opacity: 1; }
     100% { transform: scale(0.6); opacity: 0; }
-  }
+}
 
 /* -------> 2.Current logo animation */
 .header .logo {
@@ -184,7 +188,6 @@ button:hover {
 /* GRAIN EFFECT ------------------------------ */
 /* ----------------------------------------- */
 #noise {
-    animation: noise .5s steps(10) infinite;
     background-attachment: fixed;
     background-repeat: repeat;
     background-size: auto;
@@ -194,9 +197,8 @@ button:hover {
     pointer-events: none;
     position: fixed;
     top: 0;
-    transition: opacity 1s ease-out;
     width: 100vw;
-    z-index: 102;
+    z-index: 99999;
 } 
 /* ----------------------------------------- */
 
@@ -236,20 +238,15 @@ footer {
     flex-direction: column; /* Aligne les éléments enfants en colonne. */
     align-items: baseline ; /* Aligne les éléments enfants le long de la ligne de base. */
     justify-content: center; /* Distribue l'espace entre les éléments enfants de manière égale. */
-    /*font-size: 4vmin; /* Définit la taille de la police du titre à 4% de la plus petite dimension de la fenêtre. */
-    font-weight: 300; /* Définit l'épaisseur de la police du titre à 400 (normal). */
-    color: #252525; /* Définit la couleur du texte du titre en gris foncé. */
-    text-decoration: none; /* Supprime toute décoration de texte (comme le soulignement) du titre. */
     transition: all .3s ease-in-out; /* Définit une transition fluide pour toutes les propriétés sur le titre. */
 }
 .name {
     margin: 0; /* Supprime les marges autour du titre. */
     margin-bottom: 10px;
-    font-size: 30px; /* Définit la taille de la police du titre à 2% de la plus petite dimension de la fenêtre. */
+    font-size: 25px; /* Définit la taille de la police du titre à 2% de la plus petite dimension de la fenêtre. */
     font-weight: 200; /* Définit l'épaisseur de la police du titre à 300 (léger). */
     color: #252525; /* Définit la couleur du texte du titre en gris foncé. */
     text-decoration: none; /* Supprime toute décoration de texte (comme le soulignement) du titre. */
-    transition: all .3s ease-in-out; /* Définit une transition fluide pour toutes les propriétés sur le titre. */
 }
 .job {
     margin: 0; /* Supprime les marges autour du titre. */
@@ -257,14 +254,13 @@ footer {
     font-weight: 100; /* Définit l'épaisseur de la police du titre à 300 (léger). */
     color: #252525; /* Définit la couleur du texte du titre en gris foncé. */
     text-decoration: none; /* Supprime toute décoration de texte (comme le soulignement) du titre. */
-    transition: all .3s ease-in-out; /* Définit une transition fluide pour toutes les propriétés sur le titre. */
 }
-@media (max-width: 1050px) {
+@media (max-width: 900px) {
     .logo {
         height: 90px; /* Définit la hauteur du logo à 4% de la plus petite dimension de la fenêtre. */
     }
     .name {
-        font-size: 20px; /* Définit la taille de la police du titre à 4% de la plus petite dimension de la fenêtre. */
+        font-size: 17px; /* Définit la taille de la police du titre à 4% de la plus petite dimension de la fenêtre. */
     }
     .job {
         font-size: 11px; /* Définit la taille de la police du titre à 4% de la plus petite dimension de la fenêtre. */
@@ -275,7 +271,7 @@ footer {
         height: 90px; /* Définit la hauteur du logo à 4% de la plus petite dimension de la fenêtre. */
     }
     .name {
-        font-size: 18px; /* Définit la taille de la police du titre à 4% de la plus petite dimension de la fenêtre. */
+        font-size: 15px; /* Définit la taille de la police du titre à 4% de la plus petite dimension de la fenêtre. */
     }
     .job {
         font-size: 10px; /* Définit la taille de la police du titre à 4% de la plus petite dimension de la fenêtre. */
@@ -289,6 +285,7 @@ footer {
 /* ----------------------------------------- */
 .nav {
     position: relative; /* Position relative pour le conteneur de navigation */
+    opacity: 0.8;
     width: fit-content;
     top: 12vmin; /* Espace de 2% de la plus petite dimension de la fenêtre en haut */
     left: 10vmin; /* Espace de 2% de la plus petite dimension de la fenêtre à gauche */
@@ -374,6 +371,7 @@ footer {
 /* ----------------------------------------- */
 .content-inner {
     position: absolute;
+    opacity: 0.8;
     transform: translate3d(0px, 0px, 0px);
     bottom: 0;
     right: 0;
@@ -390,7 +388,7 @@ footer {
 .content-inner::-webkit-scrollbar {
     display: none;
 }
-@media (max-width: 650px) {
+@media (max-width: 800px) {
     .content-inner {
         top: 100px; /* Ajuste la position supérieure pour les écrans plus petits */
         bottom: 0; /* Aligne le bas de la page avec le bas de la fenêtre */
@@ -399,8 +397,8 @@ footer {
     }
 }
 h2 {
-    font-size: 2.5rem; /* Définit la taille de la police des titres h2 à 2.5rem. */
-    font-weight: 400; /* Définit l'épaisseur de la police des titres h2 à 400 (normal). */
+    font-size: 2rem; /* Définit la taille de la police des titres h2 à 2.5rem. */
+    font-weight: 100; /* Définit l'épaisseur de la police des titres h2 à 400 (normal). */
     color: #252525; /* Définit la couleur du texte des titres h2 en gris foncé. */
     text-align: center; /* Centre le texte des titres h2. */
     text-decoration: none; /* Supprime toute décoration de texte (comme le soulignement) des titres h2. */
@@ -426,17 +424,34 @@ h2:hover {
 .project-title {
     margin-bottom: 0.1em; /* Ajoute un petit espace en bas du titre du projet */
     margin-top: 0.1em; /* Ajoute un petit espace en bas du titre du projet */
-    display: flex;
-    justify-content: flex-end;
+    display: inline-block;
+    position: relative;
 }
 .project-item {
     position: relative; /* Nécessaire pour le positionnement */
     display: flex;
     flex-direction: column; /* Empile les éléments verticalement */
+    align-items: flex-end;
     width: 100%;
 }
 .project-item span {
     align-self: flex-end; /* Aligne le span à droite */
+}
+.project-title:hover {
+    color: transparent; /* Texte transparent */
+    text-shadow: none; /* Supprime l'ombre existante */
+    -webkit-text-stroke: 1px #252525; /* Contour noir (pour Webkit) */
+}
+/* Solution de repli pour les navigateurs non supportés */
+@supports not (-webkit-text-stroke: 1px #252525) {
+    .project-title:hover {
+        color: rgba(0, 0, 0, 0);
+        text-shadow: 
+            -1px -1px 0 #252525,
+            1px -1px 0 #252525,
+            -1px 1px 0 #252525,
+            1px 1px 0 #252525;
+    }
 }
 /* ----------------------------------------- */
 
@@ -466,6 +481,8 @@ h2:hover {
     max-width: 100%; /* S'assure qu'il ne dépasse pas */
     text-align: center;
     cursor: pointer;
+    font-family: Arial black, sans-serif;
+    font-size: 0.7rem;
 }
 /* ----------------------------------------- */
 
@@ -493,7 +510,7 @@ h2:hover {
     display: flex;
     justify-content: flex-end;
     font-size: 18px;
-    font-weight: 300;
+    font-weight: 500;
 }
 .about-item span {
     display: flex;
@@ -503,12 +520,28 @@ h2:hover {
 }
 .about-item {
     align-self: flex-end; /* Aligne le titre à droite */
+    border-top: rgba(37, 37, 37, 0.1) 1px solid; /* Bordure de 2 pixels en gris foncé */
 }
 .last {
     margin-bottom: 4em; /* Ajoute un petit espace en bas du titre du projet */
 }
 /* ----------------------------------------- */
 
+
+/* ----------------------------------------- */
+/* CONTACT-PAGE CONTENT ----------------------- */
+/* ----------------------------------------- */
+#contact-page.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.contact-content {
+    display: flex;
+    flex-direction: column; /* Empile les éléments verticalement */
+    align-items: flex-end;
+    gap: 10px; /* Espace entre chaque span */
+} 
 
 /* ----------------------------------------- */
 /* GSAP TRY -------------------------------- */
