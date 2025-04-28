@@ -312,7 +312,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /* ----------------------------------------- */
-/* IOS FIXED --------------------------- */
+/* IOS FIXED ------------------------------- */
 /* ----------------------------------------- */
 // Détection iOS
 const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
@@ -326,9 +326,9 @@ if (isIOS) {
 /* ----------------------------------------- */
 
 
-
-
-
+/* ----------------------------------------- */
+/* FORMSPREE ------------------------------- */
+/* ----------------------------------------- */
 // Formspree Submission
 document.getElementById('registrationForm').addEventListener('submit', async function(e) {
   e.preventDefault();
@@ -366,4 +366,93 @@ document.getElementById('registrationForm').addEventListener('submit', async fun
       submitBtn.textContent = originalBtnText;
       submitBtn.disabled = false;
   }
+});
+/* ----------------------------------------- */
+
+
+
+
+
+
+
+
+/* ----------------------------------------- */
+/* MOBILE MENU TOGGLE (VERSION FINALE) ----- */
+/* ----------------------------------------- */
+document.addEventListener('DOMContentLoaded', function() {
+  let hamburgerBtn = null;
+  let menuOverlay = null;
+  let clonedTitle = null;
+  let clonedNav = null;
+
+  function initMobileMenu() {
+      // Supprime les anciens éléments s'ils existent
+      if (hamburgerBtn) hamburgerBtn.remove();
+      if (menuOverlay) menuOverlay.remove();
+
+      // Crée le bouton hamburger
+      hamburgerBtn = document.createElement('div');
+      hamburgerBtn.className = 'hamburger-btn';
+      hamburgerBtn.innerHTML = '<span></span><span></span><span></span>';
+      document.body.appendChild(hamburgerBtn);
+
+      // Crée l'overlay du menu
+      menuOverlay = document.createElement('div');
+      menuOverlay.className = 'menu-overlay';
+      
+      // Clone les éléments avec tous leurs événements
+      const originalTitle = document.querySelector('.title');
+      const originalNav = document.querySelector('.nav');
+      
+      clonedTitle = originalTitle.cloneNode(true);
+      clonedNav = originalNav.cloneNode(true);
+      
+      // Réattache les événements de navigation
+      clonedNav.querySelectorAll('.nav-item').forEach(item => {
+          item.addEventListener('click', function(e) {
+              e.preventDefault();
+              const pageId = this.getAttribute('data-page');
+              window.changePage(pageId); // Utilise votre fonction existante
+              
+              // Ferme le menu
+              hamburgerBtn.classList.remove('open');
+              menuOverlay.classList.remove('active');
+          });
+      });
+
+      menuOverlay.appendChild(clonedTitle);
+      menuOverlay.appendChild(clonedNav);
+      document.body.appendChild(menuOverlay);
+
+      // Gestion du clic sur le hamburger
+      hamburgerBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          this.classList.toggle('open');
+          menuOverlay.classList.toggle('active');
+      });
+  }
+
+  function handleResize() {
+      if (window.innerWidth <= 400) {
+          if (!hamburgerBtn) {
+              initMobileMenu();
+          }
+      } else {
+          // Restaure l'affichage normal
+          if (hamburgerBtn) {
+              hamburgerBtn.remove();
+              menuOverlay.remove();
+              hamburgerBtn = null;
+              menuOverlay = null;
+          }
+          document.querySelector('.title').style.display = 'flex';
+          document.querySelector('.nav').style.display = 'block';
+      }
+  }
+
+  // Initialisation
+  handleResize();
+  
+  // Surveillance du redimensionnement
+  window.addEventListener('resize', handleResize);
 });
