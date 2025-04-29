@@ -113,7 +113,7 @@ button:hover {
     width: min(80vw, 400px);
     height: auto;
     display: block;
-    position: relative; /* Changement important */
+    position: relative;
     top: auto;
     left: auto;
     transform: none;
@@ -400,10 +400,10 @@ footer {
         font-size: 1.5rem;
     }
     .about-content h3 {
-        font-size: 0.9rem !important;
+        font-size: 0.9rem !important; /* After many try, it doesn't work without this ! */
     }
     .about-content span {
-        font-size: 0.7rem !important;
+        font-size: 0.7rem !important; /* After many try, it doesn't work without this ! */
     }
 }
 h2 {
@@ -737,7 +737,9 @@ h2:hover {
   
 /* Adaptation mobile */
  @media (hover: none) {
-    .image-hover { display: none !important; }
+    .image-hover {
+        display: none;
+    }
 }
 /* ----------------------------------------- */
 
