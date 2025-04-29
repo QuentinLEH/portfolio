@@ -578,6 +578,7 @@ h2:hover {
     flex-direction: column;
     width: auto;
     margin-top: 30px;
+    gap: 0px;
 }
 .form-row {
     display: flex;
@@ -594,7 +595,7 @@ h2:hover {
 .form-row input,
 .form-row textarea {
     width: auto;
-    padding: 12px;
+    padding: 10px;
     border: 1px solid #252525;
     border-radius: 4px;
     font-family: "JetBrains Mono", monospace;
