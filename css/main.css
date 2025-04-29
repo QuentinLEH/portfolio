@@ -215,6 +215,11 @@ footer {
     font-weight: 200; /* Définit l'épaisseur de la police du pied de page à 100 (ultra léger). */
     z-index: 20;
 }
+@media (max-width: 550px) {
+    footer span {
+        display: none;
+    }
+}
 /* ----------------------------------------- */
 
 
@@ -227,11 +232,11 @@ footer {
     left: 5vmin; /* Aligne le pied de page à gauche de la fenêtre. */
     /*font-size: 4vmin; /* Définit la taille du pied de page à 4% de la plus petite dimension de la fenêtre. */
     display: flex; /* Utilise la disposition flex pour organiser les éléments enfants. */
-    gap: 15px; /* Définit un espacement de 20 pixels entre les éléments enfants. */
     align-items: center; /* Aligne les éléments enfants au centre verticalement. */
 }
 .logo {
     height: 90px; /* Définit la hauteur du logo à 4% de la plus petite dimension de la fenêtre. */
+    width: auto;
     opacity: 1;
 }
 .title {
@@ -256,26 +261,12 @@ footer {
     color: #252525; /* Définit la couleur du texte du titre en gris foncé. */
     text-decoration: none; /* Supprime toute décoration de texte (comme le soulignement) du titre. */
 }
-@media (max-width: 900px) {
-    .logo {
-        height: 90px; /* Définit la hauteur du logo à 4% de la plus petite dimension de la fenêtre. */
-    }
+@media (max-width: 430px) {
     .name {
         font-size: 17px; /* Définit la taille de la police du titre à 4% de la plus petite dimension de la fenêtre. */
     }
     .job {
-        font-size: 11px; /* Définit la taille de la police du titre à 4% de la plus petite dimension de la fenêtre. */
-    }
-}
-@media (max-width: 465px) {
-    .logo {
-        height: 90px; /* Définit la hauteur du logo à 4% de la plus petite dimension de la fenêtre. */
-    }
-    .name {
-        font-size: 15px; /* Définit la taille de la police du titre à 4% de la plus petite dimension de la fenêtre. */
-    }
-    .job {
-        font-size: 10px; /* Définit la taille de la police du titre à 4% de la plus petite dimension de la fenêtre. */
+        font-size: 10.5px; /* Définit la taille de la police du titre à 4% de la plus petite dimension de la fenêtre. */
     }
 }
 /* ----------------------------------------- */
@@ -391,10 +382,27 @@ footer {
 }
 @media (max-width: 800px) {
     .content-inner {
-        top: 100px; /* Ajuste la position supérieure pour les écrans plus petits */
+        top: 110px; /* Ajuste la position supérieure pour les écrans plus petits */
         bottom: 0; /* Aligne le bas de la page avec le bas de la fenêtre */
         border-top: none;
         overflow-y: scroll;
+    }
+}
+@media (max-width: 430px) {
+    .project-title {
+        font-size: 1.5rem;
+    }
+    span {
+        font-size: 0.7rem;
+    }
+    .about-content h2 {
+        font-size: 1.5rem;
+    }
+    .about-content h3 {
+        font-size: 0.9rem !important;
+    }
+    .about-content span {
+        font-size: 0.7rem !important;
     }
 }
 h2 {
@@ -620,7 +628,7 @@ h2:hover {
 /* ----------------------------------------- */
 /* MOBILE TOGGLE (<= 430px) ---------------- */
 /* ----------------------------------------- */
-@media (max-width: 430px) {
+@media (max-width: 550px) {
     /* Bouton hamburger style #4 - version grande et centrée */
     .mobile-toggle {
         position: fixed;

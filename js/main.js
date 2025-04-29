@@ -377,7 +377,7 @@ function setupMobileToggle() {
   let mobileToggle = null;
 
   function handleToggle() {
-      if (window.innerWidth <= 430) {
+      if (window.innerWidth <= 550) {
           if (!mobileToggle) {
               mobileToggle = document.createElement('div');
               mobileToggle.className = 'mobile-toggle';
