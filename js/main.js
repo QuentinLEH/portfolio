@@ -422,3 +422,143 @@ function setupMobileToggle() {
 
 document.addEventListener('DOMContentLoaded', setupMobileToggle);
 /* ----------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ==============================================
+// SYSTEME DE SURVOL AVEC IMAGES (VERSION COMPACTE)
+// ==============================================
+
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Création de l'élément
+  const hoverElement = document.createElement('div');
+  hoverElement.id = 'compact-image-preview';
+  document.body.appendChild(hoverElement);
+
+  // 2. Mapping texte -> image (À personnaliser)
+  const imageMap = {
+    // ========= PROJECTS =========
+    'ANIMATED WEBSITE': './img/projects/animated-website.webp',
+    'RESPONSIVE WEBSITE': './img/projects/responsive-website.webp',
+    'FIRST WEBSITE': './img/projects/first-website.webp',
+    'MASTER THESIS': './img/projects/master-thesis.webp',
+    
+    // ========= ABOUT =========
+    'LSU Athletics [🇺🇸]': './img/about/lsu-athletics.webp',
+    'Temps-2-Sport [🇫🇷]': './img/about/temps-2-sport.webp',
+    'UNISTRA Student Organization [🇫🇷]': './img/about/unistra-student-organization.webp',
+    'VisoFactory [🇫🇷]': './img/about/visiofactory.webp',
+    'Louisiana State University [🇺🇸]': './img/about/lsu.webp',
+    'EM Business School [🇫🇷]': './img/about/em-strasbourg.webp',
+    'University of Strasbourg [🇫🇷]': './img/about/unistra.webp',
+    'GA-ON High School [🇰🇷]': './img/about/gaon-highschool.webp',
+  };
+
+  // 3. Configuration ultra-précise
+  const settings = {
+    previewWidth: '200px',   // Format très compact
+    previewHeight: '120px',  // Hauteur réduite
+    offsetX: -200,           // Coin supérieur droit aligné avec curseur
+    offsetY: 0,              // Collé juste sous le curseur
+    zIndex: 1,               // Très faible z-index
+    borderRadius: '5px',     // Coins très légers
+    fadeInDelay: 80,         // Apparition rapide
+    fadeOutDelay: 100        // Disparition rapide
+  };
+
+  // 4. Application aux éléments
+  const hoverTargets = [
+    ...document.querySelectorAll('.project-item h2, .project-title'),
+    ...document.querySelectorAll('.about-item h3')
+  ];
+
+  // 5. Fonctions optimisées
+  let isActive = false;
+  let timeout;
+
+  hoverTargets.forEach(target => {
+    const textKey = target.textContent.trim();
+    
+    if (imageMap[textKey]) {
+      target.addEventListener('mouseenter', (e) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+          hoverElement.style.backgroundImage = `url('${imageMap[textKey]}')`;
+          hoverElement.style.display = 'block';
+          positionImage(e);
+          hoverElement.style.opacity = '1';
+        }, settings.fadeInDelay);
+      });
+
+      target.addEventListener('mousemove', positionImage);
+      
+      target.addEventListener('mouseleave', () => {
+        clearTimeout(timeout);
+        hoverElement.style.opacity = '0';
+        timeout = setTimeout(() => {
+          hoverElement.style.display = 'none';
+        }, settings.fadeOutDelay);
+      });
+    }
+  });
+
+  function positionImage(e) {
+    hoverElement.style.left = `${e.clientX + settings.offsetX}px`;
+    hoverElement.style.top = `${e.clientY + settings.offsetY}px`;
+  }
+
+  // 6. Style dynamique ultra-minimaliste
+  const style = document.createElement('style');
+  style.textContent = `
+    #compact-image-preview {
+      position: fixed;
+      width: ${settings.previewWidth};
+      height: ${settings.previewHeight};
+      background-size: cover;
+      background-position: center;
+      background-color: #f8f8f8;
+      border-radius: ${settings.borderRadius};
+      pointer-events: none;
+      z-index: ${settings.zIndex};
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      opacity: 1;
+      transition: opacity 0.15s ease;
+      display: none;
+      z-index: 1;
+    }
+
+    @media (hover: none) {
+      #compact-image-preview { display: none !important; }
+    }
+  `;
+  document.head.appendChild(style);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
