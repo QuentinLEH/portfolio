@@ -440,6 +440,18 @@ document.addEventListener('DOMContentLoaded', setupMobileToggle);
 // ==============================================
 // SYSTEME DE SURVOL AVEC IMAGES (VERSION COMPACTE)
 // ==============================================
+// Précharge toutes les images du mapping
+function preloadImages() {
+  const images = Object.values(imageMap); // Récupère tous les chemins
+  images.forEach(src => {
+    const img = new Image();
+    img.src = src; // Déclenche le chargement
+  });
+}
+
+// Appelez cette fonction au chargement de la page
+window.addEventListener('load', preloadImages);
+
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Création de l'élément
@@ -533,8 +545,10 @@ document.addEventListener('DOMContentLoaded', () => {
       pointer-events: none;
       z-index: ${settings.zIndex};
       box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-      opacity: 1;
-      transition: opacity 0.15s ease;
+    opacity: 0; /* Commence invisible */
+    transition: opacity 0.3s ease-out; /* Animation plus douce */
+    transform: scale(0.98); /* Léger zoom initial */
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out; /* Animation combinée */
       display: none;
       z-index: 1;
     }
