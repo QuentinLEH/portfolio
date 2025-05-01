@@ -298,7 +298,6 @@ footer {
 .nav-item {
     display: flex;
     align-items: center;
-    cursor: pointer; /* Change le curseur en main */
     transition: all 0.3s ease;
     position: relative;
 }
@@ -331,6 +330,7 @@ footer {
     color: #252525;
     font-size: 14px;
     font-weight: 300;
+    cursor: crosshair;
 }
 /* ----------------------------------------- */
 
@@ -591,6 +591,7 @@ h2:hover {
     font-weight: 300;
     margin-bottom: 5px;
     color: #252525;
+    cursor: crosshair;
 }
 .form-row input,
 .form-row textarea {
