@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function draw(now) {
-      gl.clearColor(1.0, 1.0, 1.0, 1.0); // Fond blanc
+      gl.clearColor(1.0, 1.0, 1.0, 1.0); // White background 
       gl.clear(gl.COLOR_BUFFER_BIT);
 
       gl.useProgram(program);
@@ -429,9 +429,8 @@ const imageMap = {
   'FIRST WEBSITE': './img/projects/first-website.webp',
   'MASTER THESIS': './img/projects/master-thesis.webp',
   'FIRST TEMPLATE': './img/projects/template.webp',
-  'FIRST TEMPLATE': './img/projects/template.webp',
-  'FIRST TEMPLATE': './img/projects/template.webp',
-  'FIRST TEMPLATE': './img/projects/template.webp',
+  'PRESS KIT': './img/projects/press-kit.webp',
+  'COMM° & EVENTS': './img/projects/ticket-gala.webp',
   
   // ========= ABOUT =========
   'LSU Athletics [🇺🇸]': './img/about/lsu-athletics.webp',

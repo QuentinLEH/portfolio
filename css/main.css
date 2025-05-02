@@ -4,39 +4,39 @@
 
 /* -------> 1.Page style */
 html, body {
-    position: fixed; /* Fixe la position de l'élément par rapport à la fenêtre du navigateur, empêchant tout défilement. */
-    left: 0; /* Aligne l'élément à gauche de la fenêtre du navigateur. */
-    top: 0; /* Aligne l'élément en haut de la fenêtre du navigateur. */
-    width: 100%; /* Définit la largeur de l'élément à 100% de la largeur de la fenêtre. */
-    height: 100%; /* Définit la hauteur de l'élément à 100% de la hauteur de la fenêtre. */
-    overflow-x: hidden; /* Masque le contenu qui dépasse horizontalement, empêchant le défilement horizontal. */
-    overflow-y: hidden; /* Masque le contenu qui dépasse verticalement, empêchant le défilement vertical. */
-    background-color: var(--c-bg); /* Définit la couleur de fond en utilisant une variable CSS. */
-    color: #252525; /* Définit la couleur du texte en blanc. */
-    white-space: nowrap; /* Empêche les retours à la ligne automatiques dans les éléments. */
-    transition-property: background-color; /* Définit la propriété à animer lors des transitions. */
-    transition-duration: .9s; /* Définit la durée de la transition à 0.9 seconde. */
-    transition-timing-function: cubic-bezier(0.1, 0.4, 0.2, 1); /* Définit la fonction de temporisation de la transition pour un effet personnalisé. */
-    margin: 0; /* Supprime les marges par défaut du navigateur. */
+    position: fixed; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    overflow-x: hidden; 
+    overflow-y: hidden; 
+    background-color: var(--c-bg);
+    color: #252525;
+    white-space: nowrap;
+    transition-property: background-color;
+    transition-duration: .9s;
+    transition-timing-function: cubic-bezier(0.1, 0.4, 0.2, 1);
+    margin: 0;
 }
 html {
-    scroll-behavior: smooth; /* Active un défilement fluide pour les ancres et la navigation. */
+    scroll-behavior: smooth;
 }
 body {
     font-family: "JetBrains Mono", monospace;
     font-optical-sizing: auto;
     font-style: normal;
-    font-size: 14px; /* Définit la taille de la police à 14 pixels. */
-    font-weight: 300; /* Définit l'épaisseur de la police à 300 (léger). */
-    color: #252525; /* Définit la couleur du texte en gris foncé. */
-    background-color: #f0f0f0; /* Définit la couleur de fond en gris clair. */
-    display: grid; /* Utilise la disposition en grille pour organiser les éléments enfants. */
-    grid-template-rows: auto 1fr auto; /* Définit trois rangées : une auto-ajustée, une flexible et une auto-ajustée, pour organiser le contenu en haut, au milieu et en bas. */
-    min-height: 100%; /* Assure que la hauteur minimale du corps est égale à la hauteur de la fenêtre. */
+    font-size: 14px;
+    font-weight: 300;
+    color: #252525;
+    background-color: #f0f0f0;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100%;
 }
 h1, h2 {
     font-family: 'Roboto Flex', sans-serif;
-    font-weight: 900; /* Équivalent à Arial Black */
+    font-weight: 900;
     font-variation-settings: 'wght' 900, 'opsz' 144;
     color: #252525;
     opacity: 0.9;
@@ -45,33 +45,33 @@ h1, h2 {
 /* -------> 2.Link style */
 a {
     text-decoration: none; 
-    color: #252525; /* Définit la couleur du texte des liens en gris foncé. */
+    color: #252525;
 }
-a:focus-visible { /* Style des liens lorsqu'ils sont focusés via la navigation au clavier (accessibilité) */
-    border: 5px solid #ff0000; /* Ajoute une bordure rouge de 5 pixels autour des liens focusés. */
+a:focus-visible {
+    border: 2px solid #fce886;
 }
-a:hover { /* Style des liens au survol */
+a:hover {
     background-color: #fce886;
     transition: all 0.3s ease;
 }
 
 /* -------> 3.Button style */
 button {
-    background-color: #252525; /* Définit la couleur de fond des boutons en gris foncé. */
-    border: 1px solid #252525; /* Ajoute une bordure de 2 pixels en gris foncé autour des boutons. */
-    border-radius: 5px; /* Arrondit les coins des boutons avec un rayon de 12 pixels. */
-    color: #dddddd; /* Définit la couleur du texte des boutons en gris clair. */
-    padding: 2%; /* Ajoute un espace intérieur autour du contenu des boutons, proportionnel à leur taille. */
-    text-align: center; /* Centre le texte à l'intérieur des boutons. */
-    text-decoration: none; /* Supprime toute décoration de texte (comme le soulignement) des boutons. */
-    display: inline-block; /* Affiche les boutons comme des éléments en ligne-bloc, permettant de définir des dimensions. */
-    font-size: 14px; /* Définit la taille de la police des boutons à 1.2rem. */
-    font-weight: 300; /* Définit l'épaisseur de la police des boutons en gras. */
+    background-color: #252525;
+    border: 1px solid #252525;
+    border-radius: 5px;
+    color: #dddddd;
+    padding: 2%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 300;
 }
-button:hover { /* Style des boutons au survol */
-    background-color: #fce886; /* Change la couleur de fond des boutons en gris clair lorsqu'ils sont survolés. */
-    border: 1px solid #252525; /* Conserve la bordure en gris foncé. */
-    color: #252525; /* Change la couleur du texte des boutons en gris foncé lorsqu'ils sont survolés. */
+button:hover {
+    background-color: #fce886;
+    border: 1px solid #252525;
+    color: #252525;
     transition: all 0.3s ease;
 }
 
@@ -93,7 +93,6 @@ button:hover {
 /* ----------------------------------------- */
 
 /* -------> 1.Loading screen looks */
-/* Écran de chargement */
 .loading-screen {
     position: fixed;
     top: 0;
@@ -128,13 +127,13 @@ button:hover {
 
 /* -------> 2.Current logo animation */
 .header .logo {
-    width: 100px; /* Taille finale de l'image sur la landing page */
+    width: 100px;
     height: auto;
-    opacity: 0; /* Initialement invisible */
+    opacity: 0;
     transition: opacity 0.5s ease-out;
 }
 .header .logo.visible {
-    opacity: 1; /* Devient visible */
+    opacity: 1;
     animation: logoAnimation 0.5s ease-out forwards;
 }
 @keyframes logoAnimation {
@@ -142,10 +141,10 @@ button:hover {
         transform: scale(1);
     }
     50% {
-        transform: scale(1.4); /* Agrandit à une échelle de 1.4 */
+        transform: scale(1.4);
     }
     100% {
-        transform: scale(1); /* Revient à la taille initiale */
+        transform: scale(1);
     }
 }
 /* ----------------------------------------- */
@@ -155,16 +154,16 @@ button:hover {
 /* FRAME+BORDER ---------------------------- */
 /* ----------------------------------------- */
 .framer {
-    position: fixed; /* Fixe le conteneur par rapport à la fenêtre du navigateur */
-    top: 4vmin; /* Espace de 2% de la plus petite dimension de la fenêtre en haut */
-    left: 4vmin; /* Espace de 2% de la plus petite dimension de la fenêtre à gauche */
-    right: 4vmin; /* Espace de 2% de la plus petite dimension de la fenêtre à droite */
-    bottom: 4vmin; /* Espace de 2% de la plus petite dimension de la fenêtre en bas */
-    background-color: transparent; /* Couleur de fond du conteneur */
-    overflow: hidden; /* Permet le défilement à l'intérieur du conteneur si nécessaire */
-    box-sizing: border-box; /* Inclut les marges et les bordures dans les dimensions totales */
-    border: #252525 1px solid; /* Bordure de 2 pixels en gris foncé */
-    border-radius: 6px; /* Coins arrondis du conteneur */
+    position: fixed;
+    top: 4vmin;
+    left: 4vmin;
+    right: 4vmin;
+    bottom: 4vmin;
+    background-color: transparent;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: #252525 1px solid;
+    border-radius: 6px;
 }
 /* ----------------------------------------- */
 
@@ -209,11 +208,11 @@ button:hover {
 /* FOOTER ---------------------------------- */
 /* ----------------------------------------- */
 footer {
-    position: fixed; /* Fixe le pied de page par rapport à la fenêtre du navigateur. */
-    bottom: 1vmin; /* Aligne le pied de page en bas de la fenêtre. */
-    right: 5vmin; /* Aligne le pied de page à gauche de la fenêtre. */
-    font-size: 1.5vmin; /* Définit la taille du pied de page à 4% de la plus petite dimension de la fenêtre. */
-    font-weight: 200; /* Définit l'épaisseur de la police du pied de page à 100 (ultra léger). */
+    position: fixed;
+    bottom: 1vmin;
+    right: 5vmin;
+    font-size: 1.5vmin;
+    font-weight: 200;
     z-index: 20;
 }
 @media (max-width: 550px) {
@@ -228,46 +227,45 @@ footer {
 /* HEADER ---------------------------------- */
 /* ----------------------------------------- */
 .header {
-    position: relative; /* Fixe le pied de page par rapport à la fenêtre du navigateur. */
-    top: 5vmin; /* Aligne le pied de page en bas de la fenêtre. */
-    left: 5vmin; /* Aligne le pied de page à gauche de la fenêtre. */
-    /*font-size: 4vmin; /* Définit la taille du pied de page à 4% de la plus petite dimension de la fenêtre. */
-    display: flex; /* Utilise la disposition flex pour organiser les éléments enfants. */
-    align-items: center; /* Aligne les éléments enfants au centre verticalement. */
+    position: relative;
+    top: 5vmin;
+    left: 5vmin;
+    display: flex;
+    align-items: center;
 }
 .logo {
-    height: 90px; /* Définit la hauteur du logo à 4% de la plus petite dimension de la fenêtre. */
+    height: 90px;
     width: auto;
     opacity: 1;
 }
 .title {
-    display: flex; /* Utilise la disposition flex pour organiser les éléments enfants. */
-    flex-direction: column; /* Aligne les éléments enfants en colonne. */
-    align-items: baseline ; /* Aligne les éléments enfants le long de la ligne de base. */
-    justify-content: center; /* Distribue l'espace entre les éléments enfants de manière égale. */
-    transition: all .3s ease-in-out; /* Définit une transition fluide pour toutes les propriétés sur le titre. */
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+    transition: all .3s ease-in-out;
 }
 .name {
-    margin: 0; /* Supprime les marges autour du titre. */
+    margin: 0;
     margin-bottom: 10px;
-    font-size: 25px; /* Définit la taille de la police du titre à 2% de la plus petite dimension de la fenêtre. */
-    font-weight: 900; /* Définit l'épaisseur de la police du titre à 300 (léger). */
-    color: #252525; /* Définit la couleur du texte du titre en gris foncé. */
-    text-decoration: none; /* Supprime toute décoration de texte (comme le soulignement) du titre. */
+    font-size: 25px;
+    font-weight: 900;
+    color: #252525;
+    text-decoration: none;
 }
 .job {
-    margin: 0; /* Supprime les marges autour du titre. */
-    font-size: 16px; /* Définit la taille de la police du titre à 2% de la plus petite dimension de la fenêtre. */
-    font-weight: 100; /* Définit l'épaisseur de la police du titre à 300 (léger). */
-    color: #252525; /* Définit la couleur du texte du titre en gris foncé. */
-    text-decoration: none; /* Supprime toute décoration de texte (comme le soulignement) du titre. */
+    margin: 0;
+    font-size: 16px;
+    font-weight: 100;
+    color: #252525;
+    text-decoration: none;
 }
 @media (max-width: 430px) {
     .name {
-        font-size: 17px; /* Définit la taille de la police du titre à 4% de la plus petite dimension de la fenêtre. */
+        font-size: 17px;
     }
     .job {
-        font-size: 10.5px; /* Définit la taille de la police du titre à 4% de la plus petite dimension de la fenêtre. */
+        font-size: 10.5px;
     }
 }
 /* ----------------------------------------- */
@@ -277,20 +275,20 @@ footer {
 /* NAV ------------------------------------- */
 /* ----------------------------------------- */
 .nav {
-    position: relative; /* Position relative pour le conteneur de navigation */
+    position: relative;
     opacity: 0.8;
     width: fit-content;
-    top: 12vmin; /* Espace de 2% de la plus petite dimension de la fenêtre en haut */
-    left: 10vmin; /* Espace de 2% de la plus petite dimension de la fenêtre à gauche */
-    z-index: 100; /* Assure que la nav est au-dessus du fond */
+    top: 12vmin;
+    left: 10vmin;
+    z-index: 100;
 }
 .nav ol {
     display: flex;
     flex-direction: column;
     row-gap: 15px;
-    list-style: none; /* Supprime les puces de la liste */
-    padding: 0; /* Supprime le remplissage par défaut de la liste */
-    margin: 0; /* Supprime la marge par défaut de la liste */
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 .nav ol li {
     position: relative;
@@ -303,13 +301,13 @@ footer {
 }
 .nav-item:hover {
     transform: translateX(5px);
-  }
+}
 .nav-item a {
-    pointer-events: all; /* S'assure que les liens sont cliquables */
+    pointer-events: all;
 }
 .nav-item.active {
     font-weight: 500;
-  }
+}
 .nav-item.active .dot {
     display: block;
 }
@@ -355,7 +353,7 @@ footer {
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
-  }
+}
 /* ----------------------------------------- */
 
 
@@ -370,21 +368,20 @@ footer {
     right: 0;
     top: 0;
     width: auto;
-    overflow-y: auto; /* Active le scroll vertical */
+    overflow-y: auto;
     padding: 2vmin 4vmin;
     margin: 4vmin;
-    scrollbar-width: none; /* Cache la barre de scroll sur Firefox */
-    box-sizing: border-box; /* Inclut les marges et les bordures dans les dimensions totales */
-    -webkit-overflow-scrolling: touch; /* Permet le défilement fluide sur iOS */
+    scrollbar-width: none;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
 }
-/* Cache la barre de scroll sur Chrome et Edge */
 .content-inner::-webkit-scrollbar {
     display: none;
 }
 @media (max-width: 800px) {
     .content-inner {
-        top: 110px; /* Ajuste la position supérieure pour les écrans plus petits */
-        bottom: 0; /* Aligne le bas de la page avec le bas de la fenêtre */
+        top: 110px;
+        bottom: 0;
         border-top: none;
         overflow-y: scroll;
     }
@@ -400,19 +397,19 @@ footer {
         font-size: 1.5rem;
     }
     .about-content h3 {
-        font-size: 0.9rem !important; /* After many try, it doesn't work without this ! */
+        font-size: 0.9rem !important; /* After multiple tries, it appears at my only solutions finds to force the action */
     }
     .about-content span {
-        font-size: 0.7rem !important; /* After many try, it doesn't work without this ! */
+        font-size: 0.7rem !important; /* After multiple tries, it appears at my only solutions finds to force the action */
     }
 }
 h2 {
-    font-size: 2rem; /* Définit la taille de la police des titres h2 à 2.5rem. */
-    font-weight: 900; /* Définit l'épaisseur de la police des titres h2 à 400 (normal). */
-    color: #252525; /* Définit la couleur du texte des titres h2 en gris foncé. */
-    text-align: center; /* Centre le texte des titres h2. */
-    text-decoration: none; /* Supprime toute décoration de texte (comme le soulignement) des titres h2. */
-    transition: all .3s ease-in-out; /* Définit une transition fluide pour toutes les propriétés sur les titres h2. */
+    font-size: 2rem;
+    font-weight: 900;
+    color: #252525;
+    text-align: center;
+    text-decoration: none;
+    transition: all .3s ease-in-out;
 }
 h2:hover {
     color: #252525;
@@ -432,23 +429,20 @@ h2:hover {
 }
 .home-content {
     display: flex;
-    flex-direction: column; /* Empile les éléments verticalement */
-    gap: 10px; /* Espace entre chaque span */
+    flex-direction: column;
+    gap: 10px;
 } 
 .home-content span {
-    display: block; /* Rend chaque span plein largeur */
+    display: block;
     align-self: flex-end;
-    /* Ou alternative avec flex: */
-    /* width: 100%; */
 }
-/* -------> Home button style */
 .cta-home {
-    width: 100%; /* Prend toute la largeur du conteneur */
-    max-width: 100%; /* S'assure qu'il ne dépasse pas */
+    width: 100%;
+    max-width: 100%;
     text-align: center;
     cursor: pointer;
     font-family: "Roboto Flex", sans-serif;
-    font-weight: 900; /* Équivalent à Arial Black */
+    font-weight: 900;
     font-size: 0.7rem;
 }
 /* ----------------------------------------- */
@@ -457,34 +451,33 @@ h2:hover {
 /* ----------------------------------------- */
 /* PROJECTS-PAGE CONTENT ------------------- */
 /* ----------------------------------------- */
-.project-list   {
+.project-list {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     row-gap: 60px;
 }
 .project-title {
-    margin-bottom: 0.1em; /* Ajoute un petit espace en bas du titre du projet */
-    margin-top: 0.1em; /* Ajoute un petit espace en bas du titre du projet */
+    margin-bottom: 0.1em;
+    margin-top: 0.1em;
     display: inline-block;
     position: relative;
 }
 .project-item {
-    position: relative; /* Nécessaire pour le positionnement */
+    position: relative;
     display: flex;
-    flex-direction: column; /* Empile les éléments verticalement */
+    flex-direction: column;
     align-items: flex-end;
     width: 100%;
 }
 .project-item span {
-    align-self: flex-end; /* Aligne le span à droite */
+    align-self: flex-end;
 }
 .project-title:hover {
-    color: transparent; /* Texte transparent */
-    text-shadow: none; /* Supprime l'ombre existante */
-    -webkit-text-stroke: 1px #252525; /* Contour noir (pour Webkit) */
+    color: transparent;
+    text-shadow: none;
+    -webkit-text-stroke: 1px #252525;
 }
-/* Solution de repli pour les navigateurs non supportés */
 @supports not (-webkit-text-stroke: 1px #252525) {
     .project-title:hover {
         color: rgba(0, 0, 0, 0);
@@ -508,16 +501,16 @@ h2:hover {
 }
 .about-content {
     display: flex;
-    flex-direction: column; /* Empile les éléments verticalement */
-    gap: 10px; /* Espace entre chaque span */
+    flex-direction: column;
+    gap: 10px;
 }
 .about-content h2 {
-    margin-bottom: 0.1em; /* Ajoute un petit espace en bas du titre du projet */
-    margin-top: 0.1em; /* Ajoute un petit espace en bas du titre du projet */
-    align-self: flex-end; /* Aligne le titre à droite */
+    margin-bottom: 0.1em;
+    margin-top: 0.1em;
+    align-self: flex-end;
 }
 .about-item h3 {
-    margin-top: 0.5em; /* Ajoute un petit espace en bas du titre du projet */
+    margin-top: 0.5em;
     margin-bottom: 0.1em;
     display: flex;
     justify-content: flex-end;
@@ -531,11 +524,11 @@ h2:hover {
     font-weight: 100;
 }
 .about-item {
-    align-self: flex-end; /* Aligne le titre à droite */
-    border-top: rgba(37, 37, 37, 0.1) 1px solid; /* Bordure de 2 pixels en gris foncé */
+    align-self: flex-end;
+    border-top: rgba(37, 37, 37, 0.1) 1px solid;
 }
 .last {
-    margin-bottom: 4em; /* Ajoute un petit espace en bas du titre du projet */
+    margin-bottom: 4em;
 }
 /* ----------------------------------------- */
 
@@ -550,9 +543,9 @@ h2:hover {
 }
 .contact-content {
     display: flex;
-    flex-direction: column; /* Empile les éléments verticalement */
+    flex-direction: column;
     align-items: flex-end;
-    gap: 10px; /* Espace entre chaque span */
+    gap: 10px;
 } 
 /* ----------------------------------------- */
 
@@ -569,7 +562,7 @@ h2:hover {
     padding-right: 4vmin;
 }
 .services-content span {
-    display: block; /* Rend chaque span plein largeur */
+    display: block;
     align-self: flex-end;
     margin-bottom: 10px;
 }
@@ -610,7 +603,7 @@ h2:hover {
 .container-form button {
     width: auto;
     font-family: "Roboto Flex", sans-serif;
-    font-weight: 900; /* Équivalent à Arial Black */
+    font-weight: 900;
     cursor: n-resize;
 }
 .error {
@@ -618,7 +611,6 @@ h2:hover {
     color: #ff3333;
     margin-top: 5px;
 }
-/* Nouveaux styles */
 #formFeedback {
     font-family: "JetBrains Mono", monospace;
     font-size: 14px;
@@ -632,7 +624,6 @@ h2:hover {
 /* MOBILE TOGGLE (<= 430px) ---------------- */
 /* ----------------------------------------- */
 @media (max-width: 550px) {
-    /* Bouton hamburger style #4 - version grande et centrée */
     .mobile-toggle {
         position: fixed;
         top: 35px;
@@ -651,7 +642,6 @@ h2:hover {
         width: 80%;
         height: 80%;
     }
-    /* Animation style #4 */
     .mobile-toggle .line {
         fill: none;
         transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
@@ -674,21 +664,18 @@ h2:hover {
     .mobile-toggle.active .bottom {
         stroke-dashoffset: -68px;
     }
-    /* État initial */
     .nav {
         display: none;
     }  
     .content-inner {
         display: block;
     }
-    /* État actif */
     .mobile-active .nav {
         display: block;
     }   
     .mobile-active .content-inner {
         display: none;
     }
-    /* Style pour les liens du menu */
     .mobile-active .nav a {
         display: block;
         padding: 10px 15px;
@@ -710,8 +697,6 @@ h2:hover {
 .content-inner {
   z-index: 1;
 }
-
-/* Container de base */
 .image-hover {
     position: fixed;
     width: min(30vw, 400px);
@@ -729,23 +714,13 @@ h2:hover {
     filter: drop-shadow(0 8px 20px rgba(0,0,0,0.12));
     will-change: transform, opacity;
 }
-
-/* État visible */
 .image-hover.visible {
     opacity: 1;
     transform: translateY(0);
 }
-  
-/* Adaptation mobile */
- @media (hover: none) {
+@media (hover: none) {
     .image-hover {
         display: none;
     }
 }
-/* ----------------------------------------- */
-
-
-/* ----------------------------------------- */
-/* FINAL MOBILE OPTIMIZATION --------------- */
-/* ----------------------------------------- */
 /* ----------------------------------------- */
