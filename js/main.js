@@ -428,6 +428,10 @@ const imageMap = {
   'RESPONSIVE WEBSITE': './img/projects/responsive-website.webp',
   'FIRST WEBSITE': './img/projects/first-website.webp',
   'MASTER THESIS': './img/projects/master-thesis.webp',
+  'FIRST TEMPLATE': './img/projects/template.webp',
+  'FIRST TEMPLATE': './img/projects/template.webp',
+  'FIRST TEMPLATE': './img/projects/template.webp',
+  'FIRST TEMPLATE': './img/projects/template.webp',
   
   // ========= ABOUT =========
   'LSU Athletics [🇺🇸]': './img/about/lsu-athletics.webp',
