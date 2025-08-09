@@ -433,6 +433,7 @@ const imageMap = {
   'COMM° & EVENTS': './img/projects/ticket-gala.webp',
   
   // ========= ABOUT =========
+  'FR Chamber of Commerce - SG [🇸🇬]': './img/about/french-chamber.webp',
   'LSU Athletics [🇺🇸]': './img/about/lsu-athletics.webp',
   'Temps-2-Sport [🇫🇷]': './img/about/temps-2-sport.webp',
   'UNISTRA Student Organization [🇫🇷]': './img/about/unistra-student-organization.webp',
